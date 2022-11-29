@@ -1,6 +1,7 @@
-class CreateStatuses < ActiveRecord::Migration[7.0]
+class CreateMatches < ActiveRecord::Migration[7.0]
   def change
-    create_table :statuses do |t|
+    create_table :matches do |t|
+      t.string :status
       t.string :link_to_product
       t.references :alert, null: false, foreign_key: true
       t.references :product, null: false, foreign_key: true
