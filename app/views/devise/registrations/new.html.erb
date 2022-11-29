@@ -4,6 +4,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+  <%= f.input :discogs_username,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "discogs-username" }%>
     <%= f.input :first_name,
                 required: true,
                 autofocus: true,
@@ -23,16 +27,16 @@
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :country,
                 collection: User::NATIONS, prompt: 'Select nationality',
-                required: true,
+                required: false,
                 input_html: { autocomplete: "country" } %>
-    <%= f.input :plz,
-                required: true,
-                input_html: { autocomplete: "plz" }%>
+    <%= f.input :postcode,
+                required: false,
+                input_html: { autocomplete: "postcode" }%>
     <%= f.input :address,
-                required: true,
+                required: false,
                 input_html: { autocomplete: "address" }%>
     <%= f.input :phone_number,
-                required: true,
+                required: false,
                 input_html: { autocomplete: "phone-number" }%>
 
   </div>
