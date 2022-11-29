@@ -21,6 +21,22 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :email,
+                required: false,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :country,
+                collection: User::NATIONS, prompt: 'Select new country',
+                required: false,
+                input_html: { autocomplete: "country" } %>
+    <%= f.input :plz,
+                required: false,
+                input_html: { autocomplete: "plz" }%>
+    <%= f.input :address,
+                required: false,
+                input_html: { autocomplete: "address" }%>
+    <%= f.input :phone_number,
+                required: false,
+                input_html: { autocomplete: "phone-number" }%>
   </div>
 
   <div class="form-actions">
