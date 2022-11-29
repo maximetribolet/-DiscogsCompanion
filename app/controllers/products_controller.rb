@@ -7,7 +7,21 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:product_id])
   end
 
-  
+  def create
+    @product = Product.new(product_params)
+    @product.user = current_user
+    if Product.save
+      redirect_to dashboard
+    else
+      render :new, status: :unprocessable_entity
+    end
+
+    def destroy
+      @product = Product.find(params[:id])
+      @product.destroy
+      redirect_to dashboard, notice: "Product deleted"
+    end
+  end
 
   private
 
