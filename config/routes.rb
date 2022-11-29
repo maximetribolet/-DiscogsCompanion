@@ -17,8 +17,6 @@ Rails.application.routes.draw do
     resources :matches, only: %i[create destroy index show]
   end
 
-
-
   get "/dashboard", to: "pages#dashboard", as: :dashboard
   get "/contact", to: "pages#contact", as: :contact
   get "/about", to: "pages#about", as: :about
