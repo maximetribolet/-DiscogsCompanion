@@ -26,7 +26,7 @@ puts 'Finished!'
 puts 'Creating 10 fake products...'
 10.times do
   product = Product.new(
-    user_id: 21,
+    user_id: 1,
     media_format: "CDr",
     album_title: "Sleaford Mods",
     artist: "Sleaford Mods",
