@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :alerts
   has_many :matches, through: :products
   validates :phone_number, uniqueness: true
-  validates :discogs_username, uniqueness: true
+  # validates :discogs_username, uniqueness: true
 end

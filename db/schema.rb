@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_110619) do
     t.float "lowest_price"
     t.float "median_price"
     t.string "product_url"
+    t.string "image_url"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
