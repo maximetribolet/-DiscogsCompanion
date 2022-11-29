@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="d-flex justify-content-center align-items-center" style="background-image: url(<%= image_url "https://res.cloudinary.com/dicpef1tv/image/upload/v1669724537/background.jpg" %>); height: 90vh; background-size: cover;background-position: center;opacity-50">
+  <div class="lend-info rounded">
+    <h1 class="lend-main-heading"> Start setting custom price alerts to the album you wish to buy on Discogs </h1>
+      <%= link_to '/users/sign_up', remote: true do %>
+  <button class="btn btn-primary border-light" style="background-color: #F27B21">Register Here</button>
+<% end %>
+
+
+  <div class="footer d-flex justify-content-center align-items-center flex-row">
+  <a href="..." class="About mx-2">About</a>
+  <a href="..." class="Pricing mx-2">Pricing</a>
+  <a href="..." class="Team mx-2">Team</a>
+  <a href="..." class="btn btn-primary mx-2" style="background-color: #08A355">Contact us</a>
+  </div>
