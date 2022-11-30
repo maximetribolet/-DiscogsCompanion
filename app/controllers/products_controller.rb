@@ -1,9 +1,15 @@
 require 'open-uri'
 class ProductsController < ApplicationController
-
   def index
-    @products = Product.all
+    if params[:query].present?
+      @products = Product.local_search(params[:query])
+    else
+      @products = Product.all
+    end
   end
+  # def index
+
+  # end
 
   def show
     @product = Product.find(params[:id])

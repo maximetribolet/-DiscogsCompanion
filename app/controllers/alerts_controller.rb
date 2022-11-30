@@ -1,6 +1,7 @@
 class AlertsController < ApplicationController
   def index
-    @alert = Alert.where(user: current_user)
+    @alerts = Alert.where(user: current_user)
+    # @alert.user = current_user
   end
 
   def create
