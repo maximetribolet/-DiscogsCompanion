@@ -39,6 +39,10 @@ class ProductsController < ApplicationController
     redirect_to dashboard, notice: "Product deleted"
   end
 
+  def dashboard
+    @product = Product.where(user_id: current_user)
+  end
+
   private
 
   def set_product

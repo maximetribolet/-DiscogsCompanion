@@ -7,9 +7,10 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :release_date
       t.string :genre
       t.float :lowest_price
-      t.float :median_price
+      t.float :num_for_sale
       t.string :product_url
       t.string :image_url
+      t.string :product_id
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
