@@ -4,7 +4,9 @@ class AlertsController < ApplicationController
   end
 
   def update
-
+    @alert = Alert.find(params[:id])
+    @alert.update!
+    redirect_to dashboard
   end
 
   private
