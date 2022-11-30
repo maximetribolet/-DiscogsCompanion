@@ -48,9 +48,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_110619) do
     t.string "release_date"
     t.string "genre"
     t.float "lowest_price"
-    t.float "median_price"
+    t.integer "num_for_sale"
     t.string "product_url"
     t.string "image_url"
+    t.string "product_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

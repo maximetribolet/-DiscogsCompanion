@@ -16,11 +16,14 @@ class ProductsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
 
-    def destroy
-      @product = Product.find(params[:id])
-      @product.destroy
-      redirect_to dashboard, notice: "Product deleted"
-    end
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to dashboard, notice: "Product deleted"
+  end
+
+  def dashboard
+    @product = Product.where(user_id: current_user)
   end
 
   private
