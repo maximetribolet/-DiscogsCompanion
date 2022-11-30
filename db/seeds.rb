@@ -66,7 +66,7 @@ url = "https://api.discogs.com/users/#{discogs_username}/wants"
 
     @product = Product.new(album_title: album_title, artist: artist, genre: genre, media_format: media_format, release_date: release_date, product_id: product_id, product_url: "https://www.discogs.com/release/#{product_id}", user_id:1)
     # @product.genre = @product.genre.gsub("\", '')
-    
+
     url_release = "https://api.discogs.com/releases/#{@product.product_id}"
 
     url_release_open = URI.open(url_release).read
@@ -81,3 +81,19 @@ url = "https://api.discogs.com/users/#{discogs_username}/wants"
 
     end
   end
+
+
+# script for url product create
+user_url = 3548854
+url_product_create = https://api.discogs.com/releases/#{user_url}
+
+url_product_create_open = URI.open(url_product_create).read
+  response = JSON.parse(url_product_create_open)
+
+  @product.lowest_price
+  album_title
+  artist
+  genre
+  media_format
+  release_date
+  product_id
