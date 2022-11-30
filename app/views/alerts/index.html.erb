@@ -1,1 +1,18 @@
-display all the alerts of current user 
+<h1>Alerts</h1>
+<p><% @alerts.each do |alert| %>
+  <h4> Album Title </h4>
+  <li><%= alert.product.album_title %></li>
+  <h4> Media Condition </h4>
+  <li><%= alert.min_media_condition %></li>
+  <h4> Album Title </h4>
+  <li><%= alert.min_sleeve_condition %></li>
+  <h4> Country </h4>
+  <li><%= alert.country %></li>
+  <h4> Max Price </h4>
+  <li><%= alert.max_price %></li>
+  <h4> Alert Duration </h4>
+  <li><%= alert.alert_duration_days %></li>
+  <h4> Seller Rating </h4>
+  <li><%= alert.seller_rating %></li>
+  <%= button_to "Delete product", products_path(@alert) %></p>
+<% end %>
