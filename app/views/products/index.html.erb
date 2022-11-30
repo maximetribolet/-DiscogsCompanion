@@ -10,5 +10,30 @@
   <li><%= product.lowest_price %></li>
   <li><%= product.median_price %></li>
   <li><%= product.product_url %></li>
-<%= button_to "Delete product", products_path(@product) %>
+  <%= button_to "Delete product", products_path(@product) %>
+
+    <%= simple_form_for Alert.new do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+        <%= f.hidden_field :product_id, value: product.id %>
+        <%= f.input :min_media_condition,
+                    collection: Alert::MIN_CONDITION, prompt: 'Select Minimum Condition',
+                    required: true %>
+        <%= f.input :min_sleeve_condition,
+                    collection: Alert::MIN_SLEEVE_CONDITION, prompt: 'Select Sleeve Condition',
+                    required: false %>
+        <%= f.input :country,
+                    collection: Alert::NATIONS, prompt: 'Select country',
+                    required: true %>
+        <%= f.input :max_price,
+                    required: true %>
+        <%= f.input :alert_duration_days,
+                    required: false %>
+        <%= f.input :seller_rating,
+                    required: false%>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+
 <% end %>
