@@ -7,26 +7,24 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
-User.destroy_all
+# User.destroy_all
 Product.destroy_all
 
-puts 'Creating 10 fake users...'
-10.times do
-  user = User.new(
-    email: Faker::Internet.email,
-    password: "password",
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    country: Faker::Address.country,
-    address: Faker::Address.street_address,
-    postcode: Faker::Address.zip,
-    phone_number: Faker::PhoneNumber.cell_phone_in_e164
-  )
-  user.save!
-end
-puts 'Finished!'
-
-# Product.destroy_all
+# puts 'Creating 10 fake users...'
+# 10.times do
+#   user = User.new(
+#     email: Faker::Internet.email,
+#     password: "password",
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     country: Faker::Address.country,
+#     address: Faker::Address.street_address,
+#     postcode: Faker::Address.zip,
+#     phone_number: Faker::PhoneNumber.cell_phone_in_e164
+#   )
+#   user.save!
+# end
+# puts 'Finished!'
 
 # puts 'Creating 10 fake products...'
 # 10.times do
@@ -40,7 +38,7 @@ puts 'Finished!'
 #     lowest_price: 5.5,
 #     image_url: "https://i.discogs.com/4ERR1-8tiMlcirbi_ZhUgSXC_vRc4bHjDineoCvyXHA/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTUxOTky/OTQtMTQ4NzI3NzIw/Mi05NTA1LmpwZWc.jpeg",
 #     product_url: "https://www.discogs.com/release/5199294-Sleaford-Mods-Sleaford-Mods",
-#     product_id: "5199294"
+#     product_id: "5199294",
 #     num_for_sale: 4
 #   )
 #   product.save!
@@ -51,10 +49,10 @@ puts 'Finished!'
 puts 'fetching max wantlist'
 
 discogs_username = "theshadow2"
-url = "https://api.discogs.com/users/#{discogs_username}/wants"
+url = "https://api.discogs.com/users/#{discogs_username}/wants?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
 
-  url_open = URI.open(url).read
-  response = JSON.parse(url_open)
+url_open = URI.open(url, "Authorization" => "OLRMaNujjApbgklkmAPtMkoGmvpDDFVZGgBUfJAr").read
+response = JSON.parse(url_open)
 
   response["wants"].each do |release|
     album_title = release["basic_information"]["title"]
@@ -63,8 +61,9 @@ url = "https://api.discogs.com/users/#{discogs_username}/wants"
     media_format = release["basic_information"]["formats"][0]["name"]
     release_date = release["basic_information"]["year"]
     product_id = release["id"]
+    image_url = release["basic_information"]["cover_image"]
 
-    @product = Product.new(album_title: album_title, artist: artist, genre: genre, media_format: media_format, release_date: release_date, product_id: product_id, product_url: "https://www.discogs.com/release/#{product_id}", user_id:1)
+    @product = Product.new(album_title: album_title, artist: artist, genre: genre, media_format: media_format, release_date: release_date, product_id: product_id, product_url: "https://www.discogs.com/release/#{product_id}", image_url: image_url, user_id:1)
     # @product.genre = @product.genre.gsub("\", '')
 
     url_release = "https://api.discogs.com/releases/#{@product.product_id}"
@@ -84,16 +83,16 @@ url = "https://api.discogs.com/users/#{discogs_username}/wants"
 
 
 # script for url product create
-user_url = 3548854
-url_product_create = https://api.discogs.com/releases/#{user_url}
+# user_url = 3548854
+# url_product_create = https://api.discogs.com/releases/#{user_url}
 
-url_product_create_open = URI.open(url_product_create).read
-  response = JSON.parse(url_product_create_open)
+# url_product_create_open = URI.open(url_product_create).read
+#   response = JSON.parse(url_product_create_open)
 
-  @product.lowest_price
-  album_title
-  artist
-  genre
-  media_format
-  release_date
-  product_id
+#   @product.lowest_price
+#   album_title
+#   artist
+#   genre
+#   media_format
+#   release_date
+#   product_id

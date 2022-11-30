@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_110619) do
     t.string "release_date"
     t.string "genre"
     t.float "lowest_price"
-    t.integer "num_for_sale"
+    t.float "num_for_sale"
     t.string "product_url"
     t.string "image_url"
     t.string "product_id"
