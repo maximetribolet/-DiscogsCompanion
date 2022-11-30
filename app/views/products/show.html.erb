@@ -1,1 +1,12 @@
 <h1>Hello wieder</h1>
+
+        <img src="<%= "#{@product.image_url}" %>" />
+        <li><%= @product.media_format %></li>
+        <li><%= @product.album_title %></li>
+        <li><%= @product.artist %></li>
+        <li><%= @product.release_date %></li>
+        <li><%= @product.genre %></li>
+        <li><%= @product.lowest_price %></li>
+        <li><%= @product.median_price %></li>
+        <li><%= @product.product_url %></li>
+        <%= button_to "Delete product", products_path(@product) %>
