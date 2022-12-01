@@ -11,7 +11,11 @@ class User < ApplicationRecord
   has_many :matches, through: :products
   # validates :discogs_username, uniqueness: true
 
-  after_create :fetch_wishlist
+  after_create :fetch_wishlist, if: :discogs_username_available?
+
+  def discogs_username_available?
+    !discogs_username.nil?
+  end
 
   def fetch_wishlist
     url = "https://api.discogs.com/users/#{discogs_username}/wants?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
@@ -28,7 +32,7 @@ class User < ApplicationRecord
       product_id = release["id"]
       image_url = release["basic_information"]["cover_image"]
 
-      @product = Product.new(album_title: album_title, artist: artist, genre: genre, media_format: media_format, release_date: release_date, product_id: product_id, product_url: "https://www.discogs.com/release/#{product_id}", image_url: image_url, user_id:1)
+      @product = Product.new(album_title: album_title, artist: artist, genre: genre, media_format: media_format, release_date: release_date, product_id: product_id, product_url: "https://www.discogs.com/release/#{product_id}", image_url: image_url, user_id: id)
 
       url_release = "https://api.discogs.com/releases/#{@product.product_id}"
 
