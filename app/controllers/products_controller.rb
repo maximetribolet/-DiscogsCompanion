@@ -4,12 +4,9 @@ class ProductsController < ApplicationController
     if params[:query].present?
       @products = Product.local_search(params[:query])
     else
-      @products = Product.all
+      @products = Product.where(user: current_user)
     end
   end
-  # def index
-
-  # end
 
   def show
     @product = Product.find(params[:id])

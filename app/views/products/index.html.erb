@@ -1,7 +1,8 @@
 <h1>Hello World</h1>
 <%= render "search" %>
+<%= render "url" %>
 
-<h1>product</h1>
+<h1>products</h1>
 <p><% @products.each do |product| %>
   <img src="<%= "#{product.image_url}" %>" />
   <li><%= product.media_format %></li>
