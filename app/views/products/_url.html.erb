@@ -1,0 +1,8 @@
+<%= form_with method: :get, class: "d-flex" do %>
+  <%= text_field_tag :url,
+    params[:url],
+    class: "form-control",
+    placeholder: "Paste your URL to add a new product"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
