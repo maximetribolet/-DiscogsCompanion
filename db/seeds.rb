@@ -83,6 +83,7 @@ response = JSON.parse(url_open)
   end
 
 
+
 # script for url product create
 # user_url = 3548854
 # url_product_create = "https://api.discogs.com/releases/#{user_url}"
