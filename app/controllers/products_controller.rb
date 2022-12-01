@@ -8,6 +8,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  # trial
+
+  def alert_params
+    params.require(:alert).permit(:min_media_condition, :min_sleeve_condition, :country, :max_price, :auto_buy,
+                                  :alert_duration_days, :seller_rating, :product_id)
+  end
+
+  # trial
+
   def show
     @product = Product.find(params[:id])
   end
