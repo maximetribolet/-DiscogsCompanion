@@ -6,6 +6,7 @@
   <div class="form-inputs">
   <%= f.input :discogs_username,
                 required: false,
+                hint: ("Make sure your wantlist is set to public in discogs"),
                 autofocus: true,
                 input_html: { autocomplete: "discogs-username" }%>
     <%= f.input :first_name,
