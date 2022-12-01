@@ -12,7 +12,7 @@
   <li><%= product.genre %></li>
   <li><%= product.lowest_price %></li>
   <li><%= product.product_url %></li>
-  <%= button_to "Delete product", products_path(@product) %>
+  <%= button_to "Delete product", products_path([@product]) %>
 
     <%= simple_form_for Alert.new do |f| %>
     <%= f.error_notification %>
