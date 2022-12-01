@@ -6,9 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
+require 'pry'
 
 # User.destroy_all
-Product.destroy_all
+# Product.destroy_all
 
 # puts 'Creating 10 fake users...'
 # 10.times do
@@ -48,7 +49,7 @@ Product.destroy_all
 
 puts 'fetching max wantlist'
 
-discogs_username = "theshadow2"
+discogs_username = "raphaelvr"
 url = "https://api.discogs.com/users/#{discogs_username}/wants?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
 
 url_open = URI.open(url, "Authorization" => "OLRMaNujjApbgklkmAPtMkoGmvpDDFVZGgBUfJAr").read
@@ -84,15 +85,23 @@ response = JSON.parse(url_open)
 
 # script for url product create
 # user_url = 3548854
-# url_product_create = https://api.discogs.com/releases/#{user_url}
+# url_product_create = "https://api.discogs.com/releases/#{user_url}"
 
 # url_product_create_open = URI.open(url_product_create).read
-#   response = JSON.parse(url_product_create_open)
+# url_product_create_response = JSON.parse(url_product_create_open)
 
-#   @product.lowest_price
-#   album_title
-#   artist
-#   genre
-#   media_format
-#   release_date
-#   product_id
+#   product = Product.new(album_title: url_product_create_response["title"],
+#       artist: url_product_create_response["artists"][0]["name"],
+#       genre: url_product_create_response["styles"],
+#       media_format: url_product_create_response["formats"][0]["name"],
+#       release_date: url_product_create_response["year"],
+#       product_id: url_product_create_response["id"],
+#       lowest_price: url_product_create_response["lowest_price"],
+#       num_for_sale: url_product_create_response["num_for_sale"],
+#       image_url: url_product_create_response["images"][0]["uri"] || url_product_create_response["images"][0]["resource_url"],
+#       product_url: "https://www.discogs.com/release/#{url_product_create_response["id"]}",
+#       user_id: 1)
+
+# if product.save!
+#   puts "#{product.id} created"
+# end
