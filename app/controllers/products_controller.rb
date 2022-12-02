@@ -37,7 +37,6 @@ class ProductsController < ApplicationController
 
   def create
     data = params.dig(:scrape_release_id, :release_id).match(/\d+/)
-    raise
     if data.present?
       product = Product.new
       product.user = current_user
