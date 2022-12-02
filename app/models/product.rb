@@ -12,4 +12,28 @@ class Product < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+def release_url_fetch
+  user_url = params[:url]
+url_product_create = "https://api.discogs.com/releases/#{user_url}?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
+
+url_product_create_open = URI.open(url_product_create).read
+url_product_create_response = JSON.parse(url_product_create_open)
+
+  product = Product.new(album_title: url_product_create_response["title"],
+      artist: url_product_create_response["artists"][0]["name"],
+      genre: url_product_create_response["styles"],
+      media_format: url_product_create_response["formats"][0]["name"],
+      release_date: url_product_create_response["year"],
+      product_id: url_product_create_response["id"],
+      lowest_price: url_product_create_response["lowest_price"],
+      num_for_sale: url_product_create_response["num_for_sale"],
+      image_url: url_product_create_response["images"][0]["uri"] || url_product_create_response["images"][0]["resource_url"],
+      product_url: "https://www.discogs.com/release/#{url_product_create_response["id"]}",
+      user_id: 1)
+
+if product.save!
+  puts "#{product.id} created"
+end
+end
 end

@@ -47,62 +47,62 @@ require 'pry'
 # puts 'Finished!'
 
 
-puts 'fetching max wantlist'
+# puts 'fetching max wantlist'
 
-discogs_username = "raphaelvr"
-url = "https://api.discogs.com/users/#{discogs_username}/wants?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
+# discogs_username = "raphaelvr"
+# url = "https://api.discogs.com/users/#{discogs_username}/wants?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
 
-url_open = URI.open(url, "Authorization" => "OLRMaNujjApbgklkmAPtMkoGmvpDDFVZGgBUfJAr").read
-response = JSON.parse(url_open)
+# url_open = URI.open(url, "Authorization" => "OLRMaNujjApbgklkmAPtMkoGmvpDDFVZGgBUfJAr").read
+# response = JSON.parse(url_open)
 
-  response["wants"].each do |release|
-    album_title = release["basic_information"]["title"]
-    artist = release["basic_information"]["artists"][0]["name"]
-    genre = release["basic_information"]["styles"]
-    media_format = release["basic_information"]["formats"][0]["name"]
-    release_date = release["basic_information"]["year"]
-    product_id = release["id"]
-    image_url = release["basic_information"]["cover_image"]
+#   response["wants"].each do |release|
+#     album_title = release["basic_information"]["title"]
+#     artist = release["basic_information"]["artists"][0]["name"]
+#     genre = release["basic_information"]["styles"]
+#     media_format = release["basic_information"]["formats"][0]["name"]
+#     release_date = release["basic_information"]["year"]
+#     product_id = release["id"]
+#     image_url = release["basic_information"]["cover_image"]
 
-    @product = Product.new(album_title: album_title, artist: artist, genre: genre, media_format: media_format, release_date: release_date, product_id: product_id, product_url: "https://www.discogs.com/release/#{product_id}", image_url: image_url, user_id:1)
-    # @product.genre = @product.genre.gsub("\", '')
+#     @product = Product.new(album_title: album_title, artist: artist, genre: genre, media_format: media_format, release_date: release_date, product_id: product_id, product_url: "https://www.discogs.com/release/#{product_id}", image_url: image_url, user_id:1)
+#     # @product.genre = @product.genre.gsub("\", '')
 
-    url_release = "https://api.discogs.com/releases/#{@product.product_id}"
+#     url_release = "https://api.discogs.com/releases/#{@product.product_id}"
 
-    url_release_open = URI.open(url_release).read
-    url_release_response = JSON.parse(url_release_open)
+#     url_release_open = URI.open(url_release).read
+#     url_release_response = JSON.parse(url_release_open)
 
-    @product.lowest_price = url_release_response["lowest_price"]
-    @product.num_for_sale = url_release_response["num_for_sale"]
-
-
-    if @product.save!
-      puts "#{@product.id} created"
-
-    end
-  end
+#     @product.lowest_price = url_release_response["lowest_price"]
+#     @product.num_for_sale = url_release_response["num_for_sale"]
 
 
+#     if @product.save!
+#       puts "#{@product.id} created"
+
+#     end
+#   end
+
+# regex = \d+
 
 # script for url product create
-# user_url = 3548854
-# url_product_create = "https://api.discogs.com/releases/#{user_url}"
+user_url = 3548854
+url_product_create = "https://api.discogs.com/releases/#{user_url}?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
 
-# url_product_create_open = URI.open(url_product_create).read
-# url_product_create_response = JSON.parse(url_product_create_open)
+url_product_create_open = URI.open(url_product_create).read
+url_product_create_response = JSON.parse(url_product_create_open)
 
-#   product = Product.new(album_title: url_product_create_response["title"],
-#       artist: url_product_create_response["artists"][0]["name"],
-#       genre: url_product_create_response["styles"],
-#       media_format: url_product_create_response["formats"][0]["name"],
-#       release_date: url_product_create_response["year"],
-#       product_id: url_product_create_response["id"],
-#       lowest_price: url_product_create_response["lowest_price"],
-#       num_for_sale: url_product_create_response["num_for_sale"],
-#       image_url: url_product_create_response["images"][0]["uri"] || url_product_create_response["images"][0]["resource_url"],
-#       product_url: "https://www.discogs.com/release/#{url_product_create_response["id"]}",
-#       user_id: 1)
+  product = Product.new(album_title: url_product_create_response["title"],
+      artist: url_product_create_response["artists"][0]["name"],
+      genre: url_product_create_response["styles"],
+      media_format: url_product_create_response["formats"][0]["name"],
+      release_date: url_product_create_response["year"],
+      product_id: url_product_create_response["id"],
+      lowest_price: url_product_create_response["lowest_price"],
+      num_for_sale: url_product_create_response["num_for_sale"],
+      image_url: url_product_create_response["images"][0]["uri"] || url_product_create_response["images"][0]["resource_url"],
+      product_url: "https://www.discogs.com/release/#{url_product_create_response["id"]}",
+      user_id: 1)
 
-# if product.save!
-#   puts "#{product.id} created"
-# end
+if product.save!
+  puts "#{product.id} created"
+end
