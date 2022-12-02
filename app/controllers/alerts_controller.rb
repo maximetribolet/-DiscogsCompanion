@@ -9,11 +9,11 @@ class AlertsController < ApplicationController
     @alert.user = current_user
     # assign this aletr to current user
     # normal if save flow
-    if @alert.save
-      redirect_to products_path, notice: "alert creted"
-    else
-      render new:, status: :unprocessable_entity
-    end
+    @alert.save
+    #   redirect_to products_path, notice: "alert creted"
+    # else
+      # render new:, status: :unprocessable_entity
+    # end
   end
 
   def update

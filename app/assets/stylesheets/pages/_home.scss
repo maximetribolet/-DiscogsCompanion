@@ -23,10 +23,23 @@ html, body {
    width: 100%;
    height: 100%;
    background-color: #06113C;
+   color: #FF8C32;
 }
 
-body {
-   background: #06113C;
+form, .form-label {
+  color: #FF8C32;
+  background: #06113C;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #FF8C32;
+  background: #06113C;
+}
+
+.catCard {
+  color: #FF8C32;
+  background-color: #06113C;
 }
 
 #record {
