@@ -1,8 +1,10 @@
 // Specific CSS for your home-page
 .lend-info {
-  background: rgba(255, 255, 255, 0.867);
+  background: #06113C;
   padding: 26px;
   text-align: center;
+  background-color: #06113C;
+
 }
 
 h2 {
@@ -20,10 +22,11 @@ html, body {
    margin: 0;
    width: 100%;
    height: 100%;
+   background-color: #06113C;
 }
 
 body {
-   background: #000;
+   background: #06113C;
 }
 
 #record {
@@ -31,10 +34,10 @@ body {
    height: 100%;
    position: relative;
    overflow: hidden;
-   background-color: black;
+   background-color: #06113C;
 
    /* Center text */
-   text-align: center;
+   text-align: center, #FF8C32;
    -webkit-align-items: center;
    -ms-flex-align: center;
    align-items: center;
@@ -66,7 +69,7 @@ body {
    font-family: 'Roboto Slab', serif;
    font-size: 1.0vw;
    line-height: 0;
-   color: rgb(255, 255, 255);
+   color:#FF8C32;
    position: relative;
    margin: 0 auto;
 }
@@ -78,4 +81,3 @@ body {
    font-size: 4vw;
    line-height: 3vw;
 }
-
