@@ -41,9 +41,9 @@ class ProductsController < ApplicationController
       product = Product.new
       product.user = current_user
       product.api_scraper(data.strip.gsub("/", ""))
-      redirect_to product_path
+      redirect_to products_path
     else
-      redirect_to product_path, notice: "shitty url, mate"
+      redirect_to products_path, notice: "shitty url, mate"
     end
   end
 
