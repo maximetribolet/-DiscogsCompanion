@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
   def new
   end
 
-  def create
+  # def create
     # pegar a url que o usuria submited (primeiro tenta submit so' o release ID)
     # faz um fetch request pra o api, interpoland o relsead ID -> https://api.discogs.com/releases/339574
     # com o resultado do api, pegar as variaves que te interessam
@@ -33,17 +33,17 @@ class ProductsController < ApplicationController
     # ....
     # depois de pegar todas as variaveis que voce precisa, criar um novo Product -> Product.new(name: name_coming_from_api...)
     # normal if save redict...
-  end
-
-  # def create
-  #   @product = Product.new(product_params)
-  #   @product.user = current_user
-  #   if Product.save
-  #     redirect_to dashboard
-  #   else
-  #     render :new, status: :unprocessable_entity
-  #   end
   # end
+
+  def create
+    data = params.dig(:scrape_release_id, :release_id).match(/\d+/)[0]
+    if data.present?
+      product = Product.new
+      product.user = current_user
+      product.api_scraper(data.strip.gsub("/", ""))
+      redirect_to product
+    end
+  end
 
   def destroy
     @product = Product.find(params[:id])
