@@ -1,12 +1,15 @@
 <ul class="catCardList">
+<p><% @products.each do |product| %>
 <li class="catCardList">
-<div class="catCard"><a href="#"><img src="<%= "#{@product.image_url}" %>" /></a>
+<div class="catCard"><a href="#"><img src="<%= "#{product.image_url}" %>" /></a>
 <div class="lowerCatCard">
-<h3><%= @product.album_title %></h3>
+<h3><%= product.album_title %></h3>
 
-<%= render "form", alert: Alert.new(product: @product) %>
+<%= render "form", alert: Alert.new, product: product%>
 <%# <div id="catCardButton" class="button"><a href="#">Create an Alert</a></div> %>
+  <%= button_to "Delete product", product_path(product), method: :delete %>
 </div>
 </div>
 </li>
+<% end %>
 </ul>
