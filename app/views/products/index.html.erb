@@ -2,6 +2,8 @@
 <%= render "search" %>
 <%= render "url" %>
 
+<%= render "hover_card" %>
+
 <h1>products</h1>
 <p><% @products.each do |product| %>
   <img src="<%= "#{product.image_url}" %>" />
