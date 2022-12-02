@@ -36,10 +36,11 @@ class ProductsController < ApplicationController
   # end
 
   def create
-    if params.dig(:scrape_release_id, :release_id).present?
+    data = params.dig(:scrape_release_id, :release_id).match(/\d+/)[0]
+    if data.present?
       product = Product.new
       product.user = current_user
-      product.api_scraper(params.dig(:scrape_release_id, :release_id))
+      product.api_scraper(data.strip.gsub("/", ""))
       redirect_to product
     end
   end
