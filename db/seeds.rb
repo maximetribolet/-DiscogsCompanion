@@ -44,7 +44,7 @@ require 'pry'
 #   )
 #   product.save!
 # end
-# puts 'Finished!'
+
 
 
 puts 'fetching max wantlist'
