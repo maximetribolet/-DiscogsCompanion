@@ -17,6 +17,15 @@ class User < ApplicationRecord
     !discogs_username.nil?
   end
 
+  def trying_fetch
+    begin
+      fetch_wishlist
+    rescue => exception
+
+    end
+
+  end
+
   def fetch_wishlist
     url = "https://api.discogs.com/users/#{discogs_username}/wants?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
 
