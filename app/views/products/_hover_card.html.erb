@@ -1,87 +1,15 @@
 <ul class="catCardList">
+<p><% @products.each do |product| %>
 <li class="catCardList">
-<div class="catCard"><a href="#"><img src="<%= "#{@product.image_url}" %>" /></a>
+<div class="catCard"><a href="#"><img src="<%= "#{product.image_url}" %>" /></a>
 <div class="lowerCatCard">
-<h3 style="font-size: 20px;"><%= @product.album_title %></h3>
+<h3><%= product.album_title %></h3>
 
-<%= render "form", alert: Alert.new(product: @product) %>
-<div id="catCardButton" class="button"><a href="#">View Product</a></div>
+<%= render "form", alert: Alert.new, product: product%>
+<%# <div id="catCardButton" class="button"><a href="#">Create an Alert</a></div> %>
+  <%= button_to "Delete product", product_path(product), method: :delete %>
 </div>
 </div>
 </li>
-<li class="catCardList">
-<div class="catCard"><a href="#"><img src="http://placehold.it/221x200" alt=""></a>
-<div class="lowerCatCard">
-<h3>Product Name</h3>
-<div class="startingPrice">Prices Starting At <span>$299.99</span></div>
-<p>Bacon ipsum dolor sit amet hamburger doner kielbasa beef ribs, frankfurter prosciutto tri-tip pig turducken tenderloin filet mignon. Frankfurter chuck fatback venison pastrami sirloin. Rump tongue boudin meatloaf venison ham prosciutto.</p>
-<h4>Best Used For:</h4>
-<ul>
-<li>Eating Bacon</li>
-<li>Cooking Bacon</li>
-</ul>
-<div id="catCardButton" class="button"><a href="$">View Product</a></div>
-</div>
-</div>
-</li>
-<li class="catCardList">
-<div class="catCard"><a href="#"><img src="http://placehold.it/221x200" alt=""></a>
-<div class="lowerCatCard">
-<h3>Product Name</h3>
-<div class="startingPrice">Prices Starting At <span>$44.99</span></div>
-<p>Bacon ipsum dolor sit amet hamburger doner kielbasa beef ribs, frankfurter prosciutto tri-tip pig turducken tenderloin filet mignon. Frankfurter chuck fatback venison pastrami sirloin. Rump tongue boudin meatloaf venison ham prosciutto.</p>
-<h4>Best Used For:</h4>
-<ul>
-<li>Eating Bacon</li>
-<li>Cooking Bacon</li>
-</ul>
-<div id="catCardButton" class="button"><a href="#">View Product</a></div>
-</div>
-</div>
-</li>
-<li class="catCardList">
-<div class="catCard"><a href="#"><img src="http://placehold.it/221x200" alt=""></a>
-<div class="lowerCatCard">
-<h3>Product Name</h3>
-<div class="startingPrice">Prices Starting At <span>$44.99</span></div>
-<p>Bacon ipsum dolor sit amet hamburger doner kielbasa beef ribs, frankfurter prosciutto tri-tip pig turducken tenderloin filet mignon. Frankfurter chuck fatback venison pastrami sirloin. Rump tongue boudin meatloaf venison ham prosciutto.</p>
-<h4>Best Used For:</h4>
-<ul>
-<li>Eating Bacon</li>
-<li>Cooking Bacon</li>
-</ul>
-<div id="catCardButton" class="button"><a href="#">View Product</a></div>
-</div>
-</div>
-</li>
-<li class="catCardList">
-<div class="catCard"><a href="#"><img src="http://placehold.it/221x200" alt=""></a>
-<div class="lowerCatCard">
-<h3>Product Name</h3>
-<div class="startingPrice">Prices Starting At <span>$169.99</span></div>
-<p>Bacon ipsum dolor sit amet hamburger doner kielbasa beef ribs, frankfurter prosciutto tri-tip pig turducken tenderloin filet mignon. Frankfurter chuck fatback venison pastrami sirloin. Rump tongue boudin meatloaf venison ham prosciutto.</p>
-<h4>Best Used For:</h4>
-<ul>
-<li>Eating Bacon</li>
-<li>Cooking Bacon</li>
-</ul>
-<div id="catCardButton" class="button"><a href="#">View Product</a></div>
-</div>
-</div>
-</li>
-<li class="catCardList">
-<div class="catCard"><a href="#"><img src="http://placehold.it/221x200" alt=""></a>
-<div class="lowerCatCard">
-<h3>Product Name</h3>
-<div class="startingPrice">Prices Starting At <span>$174.99</span></div>
-<p>Bacon ipsum dolor sit amet hamburger doner kielbasa beef ribs, frankfurter prosciutto tri-tip pig turducken tenderloin filet mignon. Frankfurter chuck fatback venison pastrami sirloin. Rump tongue boudin meatloaf venison ham prosciutto.</p>
-<h4>Best Used For:</h4>
-<ul>
-<li>Eating Bacon</li>
-<li>Cooking Bacon</li>
-</ul>
-<div id="catCardButton" class="button"><a href="#">View Product</a></div>
-</div>
-</div>
-</li>
+<% end %>
 </ul>
