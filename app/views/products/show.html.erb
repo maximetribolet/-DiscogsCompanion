@@ -7,6 +7,9 @@
         <li><%= @product.release_date %></li>
         <li><%= @product.genre %></li>
         <li><%= @product.lowest_price %></li>
-        <li><%= @product.median_price %></li>
+
         <li><%= @product.product_url %></li>
         <%= button_to "Delete product", products_path(@product) %>
+
+<%= render "hover_card" %>
+

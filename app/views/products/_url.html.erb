@@ -1,8 +1,5 @@
-<%= form_with method: :get, class: "d-flex" do %>
-  <%= text_field_tag :url,
-    params[:url],
-    class: "form-control",
-    placeholder: "Paste your URL to add a new release you wish to monitor"
-  %>
-  <%= submit_tag "Add Release", class: "btn btn-primary" %>
+
+<%= simple_form_for :scrape_release_id, url: products_path, method: :post do |f|  %>
+  <%= f.input :release_id %>
+  <%= f.submit "search", class: "btn btn-primary" %>
 <% end %>
