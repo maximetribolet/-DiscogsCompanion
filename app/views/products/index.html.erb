@@ -3,17 +3,6 @@
 <%= render "url" %>
 
 <h1>products</h1>
-<p><% @products.each do |product| %>
-  <img src="<%= "#{product.image_url}" %>" />
-  <li><%= product.media_format %></li>
-  <li><%= product.album_title %></li>
-  <li><%= product.artist %></li>
-  <li><%= product.release_date %></li>
-  <li><%= product.genre %></li>
-  <li>Lowest price:<%= product.lowest_price %>  Eur</li>
-  <li><%= product.num_for_sale %> copies available</li>
-  <li><%= product.product_url %></li>
-  <%= button_to "Delete product", product_path(product), method: :delete %>
 
 
   <%= render "hover_card"%>
