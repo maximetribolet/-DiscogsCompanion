@@ -9,8 +9,9 @@ class AlertsController < ApplicationController
     @alert.user = current_user
     # assign this alert to current user
     @alert.product = Product.find(params[:product_id])
-    @alert.media_format = Product.find(params[:product_id])
-    @alert.discogs_id = P
+    raise
+    @alert.media_format = @alert.product.media_format
+    @alert.discogs_id = @alert.product.product_id
     if @alert.save!
       redirect_to products_path, notice: "alert created"
     else
