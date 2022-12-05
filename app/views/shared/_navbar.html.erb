@@ -12,19 +12,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="custom-btn btn-7">
-            <%= link_to "Set Alerts", "/products", class: "custom-btn btn-7" %>
+          <li class="">
+            <%= link_to "Set Alerts", "/products", class: "custom-btn btn-1" %>
           </li>
-          <li class="custom-btn btn-7">
-            <%= link_to "My Alerts", "/alerts", class: "custom-btn btn-7" %>
+          <li class="">
+            <%= link_to "My Alerts", "/alerts", class: "custom-btn btn-1" %>
           </li>
-          <li class="custom-btn btn-7">
-            <%= link_to "My Matches", "/matches", class: "custom-btn btn-7" %>
+          <li class="">
+            <%= link_to "My Matches", "/matches", class: "custom-btn btn-1" %>
 
           </li>
-          <li class="custom-btn btn-7">
-            <button class="custom-btn btn-7" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Menu
+          <li class="">
+            <button class="custom-btn btn-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu \/
             </button>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Edit Profile", "/users/edit", class: "dropdown-item" %>
