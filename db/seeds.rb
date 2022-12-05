@@ -7,6 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 require 'pry'
+require "open-uri"
+require "nokogiri"
 
 # User.destroy_all
 # Product.destroy_all
@@ -50,7 +52,7 @@ require 'pry'
 # puts 'fetching max wantlist'
 
 # discogs_username = "raphaelvr"
-# url = "https://api.discogs.com/users/#{discogs_username}/wants?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
+url = "https://api.discogs.com/users/#{discogs_username}/wants?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
 
 # url_open = URI.open(url, "Authorization" => "OLRMaNujjApbgklkmAPtMkoGmvpDDFVZGgBUfJAr").read
 # response = JSON.parse(url_open)
@@ -83,25 +85,31 @@ require 'pry'
 #   end
 
 
-script for url product create
-user_url = 3548854
-url_product_create = "https://api.discogs.com/releases/#{user_url}"
+# script for url product create
+# user_url = 3548854
+# url_product_create = "https://api.discogs.com/releases/#{user_url}"
 
-url_product_create_open = URI.open(url_product_create).read
-url_product_create_response = JSON.parse(url_product_create_open)
+# url_product_create_open = URI.open(url_product_create).read
+# url_product_create_response = JSON.parse(url_product_create_open)
 
-  product = Product.new(album_title: url_product_create_response["title"],
-      artist: url_product_create_response["artists"][0]["name"],
-      genre: url_product_create_response["styles"],
-      media_format: url_product_create_response["formats"][0]["name"],
-      release_date: url_product_create_response["year"],
-      product_id: url_product_create_response["id"],
-      lowest_price: url_product_create_response["lowest_price"],
-      num_for_sale: url_product_create_response["num_for_sale"],
-      image_url: url_product_create_response["images"][0]["uri"] || url_product_create_response["images"][0]["resource_url"],
-      product_url: "https://www.discogs.com/release/#{url_product_create_response["id"]}",
-      user_id: 1)
+#   product = Product.new(album_title: url_product_create_response["title"],
+#       artist: url_product_create_response["artists"][0]["name"],
+#       genre: url_product_create_response["styles"],
+#       media_format: url_product_create_response["formats"][0]["name"],
+#       release_date: url_product_create_response["year"],
+#       product_id: url_product_create_response["id"],
+#       lowest_price: url_product_create_response["lowest_price"],
+#       num_for_sale: url_product_create_response["num_for_sale"],
+#       image_url: url_product_create_response["images"][0]["uri"] || url_product_create_response["images"][0]["resource_url"],
+#       product_url: "https://www.discogs.com/release/#{url_product_create_response["id"]}",
+#       user_id: 1)
 
-if product.save!
-  puts "#{product.id} created"
-end
+# if product.save!
+#   puts "#{product.id} created"
+# end
+
+# Parser
+https://www.discogs.com/sell/list?price1=0&price2=16&artist_id=1289&ev=ab&ships_from=Germany&format=Vinyl&currency=EUR&condition=Very+Good+%28VG%29
+
+
+"https://www.discogs.com/sell/list?sort=listed%2Cdesc&limit=250&price2=#{@alert.max_price}&q=5611392&format=Vinyl&condition=#{@alert.min_media_condition}&currency=EUR&ships_from=#{@alert.country}&page=1"
