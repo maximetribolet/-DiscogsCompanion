@@ -1,5 +1,6 @@
 <h1>Alerts</h1>
 <p><% @alerts.each do |alert| %>
+<%= render "hover_card", alert: alert %>
   <h4> Album Title </h4>
   <li><%= alert.product.album_title %></li>
   <h4> Media Condition </h4>
