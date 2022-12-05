@@ -1,7 +1,8 @@
-<%= simple_form_for [product, alert] do |f| %>
+<%= simple_form_for alert do |f| %>
 <%= f.error_notification %>
 
 <div class="form-inputs">
+    <%= f.hidden_field product.id, value: product.id %>
     <%= f.input :min_media_condition,
                 collection: Alert::MIN_CONDITION, prompt: 'Select Minimum Condition',
                 required: true %>

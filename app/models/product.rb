@@ -15,7 +15,6 @@ class Product < ApplicationRecord
                   }
 
   def api_scraper(release_id)
-
     url_product_create = "https://api.discogs.com/releases/#{release_id}?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
 
     url_product_create_open = URI.open(url_product_create).read
