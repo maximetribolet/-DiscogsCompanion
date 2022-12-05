@@ -18,7 +18,7 @@ p{
 /* Hover Card
 .......................................................................*/
 div.catCard {
-  border: solid 5px #06113C;
+  border: solid 5px #27325a;
   box-shadow: 5px, 5px, 5px, 5px, gray;
   background: #06113C;
   width: 221px;
@@ -26,6 +26,8 @@ div.catCard {
   display: block;
   position: relative;
   overflow: hidden;
+  border-radius: 5%;
+  
 }
 div.lowerCatCard {
   position: absolute;
