@@ -8,12 +8,12 @@ class AlertsController < ApplicationController
     @alert = Alert.new(alert_params)
     @alert.user = current_user
     # assign this aletr to current user
-    # normal if save flow
-    @alert.save
-    #   redirect_to products_path, notice: "alert creted"
-    # else
-      # render new:, status: :unprocessable_entity
-    # end
+    @alert.product = Product.find(params[:product_id])
+    if @alert.save!
+      redirect_to products_path, notice: "alert created"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update
