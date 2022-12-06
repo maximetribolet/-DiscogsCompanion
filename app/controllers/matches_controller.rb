@@ -3,7 +3,4 @@ class MatchesController < ApplicationController
     @matches = Match.where(user: current_user)
   end
 
-  def create
-    
-  end
 end

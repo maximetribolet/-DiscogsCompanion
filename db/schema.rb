@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_102933) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_141247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,16 +18,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_102933) do
     t.string "min_media_condition"
     t.string "min_sleeve_condition"
     t.string "country"
-    t.string "max_price"
+    t.float "max_price"
     t.boolean "auto_buy"
     t.integer "alert_duration_days"
     t.float "seller_rating"
+    t.string "media_format"
+    t.string "discogs_id"
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "media_format"
-    t.string "discogs_id"
+    t.string "currency"
     t.index ["product_id"], name: "index_alerts_on_product_id"
     t.index ["user_id"], name: "index_alerts_on_user_id"
   end
@@ -35,10 +36,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_102933) do
   create_table "matches", force: :cascade do |t|
     t.string "status"
     t.string "link_to_product"
+    t.float "match_price"
     t.bigint "alert_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "currency"
     t.index ["alert_id"], name: "index_matches_on_alert_id"
     t.index ["product_id"], name: "index_matches_on_product_id"
   end

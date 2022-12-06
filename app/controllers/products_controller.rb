@@ -1,21 +1,13 @@
 require 'open-uri'
 class ProductsController < ApplicationController
   def index
+    alert_product_ids = Alert.distinct.pluck(:product_id)
     if params[:query].present?
-      @products = Product.local_search(params[:query])
+      @products = Product.where(user: current_user).local_search(params[:query]).where.not(id: alert_product_ids)
     else
-      @products = Product.where(user: current_user)
+      @products = Product.where(user: current_user).where.not(id: alert_product_ids)
     end
   end
-
-  # trial
-
-  # def alert_params
-  #   params.require(:alert).permit(:min_media_condition, :min_sleeve_condition, :country, :max_price, :auto_buy,
-  #                                 :alert_duration_days, :seller_rating, :product_id)
-  # end
-
-  # trial
 
   def show
     @product = Product.find(params[:id])

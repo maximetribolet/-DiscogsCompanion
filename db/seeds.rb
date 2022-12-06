@@ -47,8 +47,6 @@ require "nokogiri"
 #   product.save!
 # end
 
-
-
 # puts 'fetching max wantlist'
 
 # discogs_username = "raphaelvr"
@@ -111,7 +109,7 @@ require "nokogiri"
 # Parser
 
 # marketplace_request_url = "https://www.discogs.com/sell/release/#{@alert.discogs_id}?price1=&price2=#{@alert.max_price}&ships_from=#{@alert.country}"
-marketplace_request_url = "https://www.discogs.com/sell/release/3548854?ev=rb"
+marketplace_request_url = "https://www.discogs.com/sell/release/367104?price1=&price2=30&currency=EUR&ships_from=Germany"
 html_file = URI.open(marketplace_request_url).read
 html_doc = Nokogiri::HTML(html_file)
 
@@ -121,19 +119,17 @@ html_doc.search(".shortcut_navigable").each do |element|
   p element.search(".item_description_title").attribute("href").value
 
   # media_condition
-  media_condition_scrape = html_doc.css(".item_condition")
-  p media_condition_scrape.map { |m| m.css('span')[2].text.match(/\n(.*)\n/) }[0][1].strip
+  p element.search('.item_condition').text.match(/\n(.*?)\n\n/)[1].strip
 
-  # sleeve_condition
-  p media_condition_scrape.map { |m| m.css('span').text.strip.match(/Sleeve:(.*)/) }[0][1].strip
+  # # sleeve_condition
+  p element.search('.item_condition').text.match(/Sleeve:\n(.*?)\n/)[1].strip
 
-  # seller rating
-  seller_rating_scrape = html_doc.css(".seller_info")
-  p seller_rating_scrape.map { |m| m.css('strong').text.match(/[0-9]*\.[0-9]*%/) }[0][0]
+  # # seller rating
+  p element.search('.seller_info').text.match(/\d+\.\d+%/)[0].gsub("%", "")
 
-  #Price
-  match_price_scrape = html_doc.css(".price")
-  p match_price_scrape.text.strip.match(/[$£€¥]\s*[-+]?[0-9]*\.?[0-9]+/)[0]
+  # #Price
+  p element.search('.price').text.match(/\d+\.\d+/)[0]
 
-
+  # #Currency
+  p element.search('.price').text.match(/[^i2@]/)[0]
 end
