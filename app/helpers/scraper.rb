@@ -12,24 +12,26 @@ class Scraper
     html_file = URI.open(marketplace_request_url).read
     html_doc = Nokogiri::HTML(html_file)
 
-    html_doc.search(".shortcut_navigable").map do |element|
+    results = []
+
+    html_doc.search(".shortcut_navigable").each do |element|
+
       # link to release sale page
       link_to_product = element.search(".item_description_title").attribute("href").value
 
       # media_condition
-      media_condition_scrape = html_doc.css(".item_condition")
-      media_condition = media_condition_scrape.map { |m| m.css('span')[2].text.match(/\n(.*)\n/) }[0][1].strip
+      media_condition = element.search('.item_condition').text.match(/\n(.*?)\n\n/)[1].strip
 
-      # sleeve_condition
-      sleeve_condition = media_condition_scrape.map { |m| m.css('span').text.strip.match(/Sleeve:(.*)/) }[0][1].strip
+      # # sleeve_condition
+      sleeve_condition = element.search('.item_condition').text.match(/Sleeve:\n(.*?)\n/)[1].strip
 
-      # seller rating
-      seller_rating_scrape = html_doc.css(".seller_info")
-      seller_rating = seller_rating_scrape.map { |m| m.css('strong').text.match(/[0-9]*\.[0-9]*%/) }[0][0]
+      # # seller rating
+      seller_rating = element.search('.seller_info').text.match(/\d+\.\d+%/)[0].gsub("%", "")
 
-      # Price
-      match_price_scrape = html_doc.css(".price")
-      match_price = match_price_scrape.text.strip.match(/[$£€¥]\s*[-+]?[0-9]*\.?[0-9]+/)[0]
+      # #Price
+      match_price = element.search('.price').text.match(/[$£€]\d+\.\d+/)[0]
+
+      results << {sleeve_condition: sleeve_condition }
     end
 
     create_matches(results)
@@ -58,15 +60,15 @@ class Scraper
     when "Near Mint (NM or M-)"
       ["Mint (M)", "Near Mint (NM or M-)"]
     when "Very Good Plus (VG+)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)"]
     when "Very Good (VG)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+", "Very Good (VG)"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)"]
     when "Good Plus (G+)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+", "Very Good (VG)", "Good Plus (G+)"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)"]
     when "Fair (F)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+", "Very Good (VG)", "Good Plus (G+)", "Fair (F)"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)"]
     when "Poor (P)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)"]
     end
   end
 
@@ -77,17 +79,17 @@ class Scraper
     when "Near Mint (NM or M-)"
       ["Mint (M)", "Near Mint (NM or M-)"]
     when "Very Good Plus (VG+)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)"]
     when "Very Good (VG)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+", "Very Good (VG)"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)"]
     when "Good Plus (G+)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+", "Very Good (VG)", "Good Plus (G+)"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)"]
     when "Fair (F)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+", "Very Good (VG)", "Good Plus (G+)", "Fair (F)"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)"]
     when "Poor (P)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)"]
     when "Generic"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)", "Generic"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)", "Generic"]
     end
   end
 end
