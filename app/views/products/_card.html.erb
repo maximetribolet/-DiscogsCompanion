@@ -7,7 +7,14 @@
 					<div class="front" style="background-image: url(<%= "#{product.image_url}"  %>)">
 						<div class="inner">
 							<p><%= product.album_title %></p>
-              <span></span>
+              <span>
+              <h6>Artist</h6>
+              <p><%= product.artist %></p>
+              <h6>Quantity for sale</h6>
+              <p><%= product.num_for_sale %></p>
+              <h6>Lowest Price</h6>
+              <p><%= product.lowest_price %></p>
+              </span>
 						</div>
 					</div>
 					<div class="back">
