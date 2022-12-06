@@ -7,40 +7,133 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 require 'pry'
+require "open-uri"
+require "nokogiri"
 
 # User.destroy_all
-Product.destroy_all
+# Product.destroy_all
 
-puts 'Creating 10 fake users...'
-10.times do
-  user = User.new(
-    email: Faker::Internet.email,
-    password: "password",
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    country: Faker::Address.country,
-    address: Faker::Address.street_address,
-    postcode: Faker::Address.zip,
-    phone_number: Faker::PhoneNumber.cell_phone_in_e164
-  )
-  user.save!
-end
-puts 'Finished!'
+# puts 'Creating 10 fake users...'
+# 10.times do
+#   user = User.new(
+#     email: Faker::Internet.email,
+#     password: "password",
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     country: Faker::Address.country,
+#     address: Faker::Address.street_address,
+#     postcode: Faker::Address.zip,
+#     phone_number: Faker::PhoneNumber.cell_phone_in_e164
+#   )
+#   user.save!
+# end
+# puts 'Finished!'
 
-puts 'Creating 10 fake products...'
-10.times do
-  product = Product.new(
-    user_id: 1,
-    media_format: "CDr",
-    album_title: "Sleaford Mods",
-    artist: "Sleaford Mods",
-    release_date: "2007",
-    genre: "Electronic, Rock, Pop",
-    lowest_price: 5.5,
-    image_url: "https://i.discogs.com/4ERR1-8tiMlcirbi_ZhUgSXC_vRc4bHjDineoCvyXHA/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTUxOTky/OTQtMTQ4NzI3NzIw/Mi05NTA1LmpwZWc.jpeg",
-    product_url: "https://www.discogs.com/release/5199294-Sleaford-Mods-Sleaford-Mods",
-    product_id: "5199294",
-    num_for_sale: 4
-  )
-  product.save!
+# puts 'Creating 10 fake products...'
+# 10.times do
+#   product = Product.new(
+#     user_id: 1,
+#     media_format: "CDr",
+#     album_title: "Sleaford Mods",
+#     artist: "Sleaford Mods",
+#     release_date: "2007",
+#     genre: "Electronic, Rock, Pop",
+#     lowest_price: 5.5,
+#     image_url: "https://i.discogs.com/4ERR1-8tiMlcirbi_ZhUgSXC_vRc4bHjDineoCvyXHA/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTUxOTky/OTQtMTQ4NzI3NzIw/Mi05NTA1LmpwZWc.jpeg",
+#     product_url: "https://www.discogs.com/release/5199294-Sleaford-Mods-Sleaford-Mods",
+#     product_id: "5199294",
+#     num_for_sale: 4
+#   )
+#   product.save!
+# end
+
+
+
+# puts 'fetching max wantlist'
+
+# discogs_username = "raphaelvr"
+# url = "https://api.discogs.com/users/#{discogs_username}/wants?key=yuMTbCWYdVossTDyzxJk&secret=EICWESpDigMZdQDlHVejeAHrmLNdATxd"
+
+# url_open = URI.open(url, "Authorization" => "OLRMaNujjApbgklkmAPtMkoGmvpDDFVZGgBUfJAr").read
+# response = JSON.parse(url_open)
+
+#   response["wants"].each do |release|
+#     album_title = release["basic_information"]["title"]
+#     artist = release["basic_information"]["artists"][0]["name"]
+#     genre = release["basic_information"]["styles"]
+#     media_format = release["basic_information"]["formats"][0]["name"]
+#     release_date = release["basic_information"]["year"]
+#     product_id = release["id"]
+#     image_url = release["basic_information"]["cover_image"]
+
+#     @product = Product.new(album_title: album_title, artist: artist, genre: genre, media_format: media_format, release_date: release_date, product_id: product_id, product_url: "https://www.discogs.com/release/#{product_id}", image_url: image_url, user_id:1)
+#     # @product.genre = @product.genre.gsub("\", '')
+
+#     url_release = "https://api.discogs.com/releases/#{@product.product_id}"
+
+#     url_release_open = URI.open(url_release).read
+#     url_release_response = JSON.parse(url_release_open)
+
+#     @product.lowest_price = url_release_response["lowest_price"]
+#     @product.num_for_sale = url_release_response["num_for_sale"]
+
+
+#     if @product.save!
+#       puts "#{@product.id} created"
+
+#     end
+#   end
+
+
+# script for url product create
+# user_url = 3548854
+# url_product_create = "https://api.discogs.com/releases/#{user_url}"
+
+# url_product_create_open = URI.open(url_product_create).read
+# url_product_create_response = JSON.parse(url_product_create_open)
+
+#   product = Product.new(album_title: url_product_create_response["title"],
+#       artist: url_product_create_response["artists"][0]["name"],
+#       genre: url_product_create_response["styles"],
+#       media_format: url_product_create_response["formats"][0]["name"],
+#       release_date: url_product_create_response["year"],
+#       product_id: url_product_create_response["id"],
+#       lowest_price: url_product_create_response["lowest_price"],
+#       num_for_sale: url_product_create_response["num_for_sale"],
+#       image_url: url_product_create_response["images"][0]["uri"] || url_product_create_response["images"][0]["resource_url"],
+#       product_url: "https://www.discogs.com/release/#{url_product_create_response["id"]}",
+#       user_id: 1)
+
+# if product.save!
+#   puts "#{product.id} created"
+# end
+
+# Parser
+
+# marketplace_request_url = "https://www.discogs.com/sell/release/#{@alert.discogs_id}?price1=&price2=#{@alert.max_price}&ships_from=#{@alert.country}"
+marketplace_request_url = "https://www.discogs.com/sell/release/3548854?ev=rb"
+html_file = URI.open(marketplace_request_url).read
+html_doc = Nokogiri::HTML(html_file)
+
+html_doc.search(".shortcut_navigable").each do |element|
+
+  # link to release sale page
+  p element.search(".item_description_title").attribute("href").value
+
+  # media_condition
+  media_condition_scrape = html_doc.css(".item_condition")
+  p media_condition_scrape.map { |m| m.css('span')[2].text.match(/\n(.*)\n/) }[0][1].strip
+
+  # sleeve_condition
+  p media_condition_scrape.map { |m| m.css('span').text.strip.match(/Sleeve:(.*)/) }[0][1].strip
+
+  # seller rating
+  seller_rating_scrape = html_doc.css(".seller_info")
+  p seller_rating_scrape.map { |m| m.css('strong').text.match(/[0-9]*\.[0-9]*%/) }[0][0]
+
+  #Price
+  match_price_scrape = html_doc.css(".price")
+  p match_price_scrape.text.strip.match(/[$£€¥]\s*[-+]?[0-9]*\.?[0-9]+/)[0]
+
+
 end

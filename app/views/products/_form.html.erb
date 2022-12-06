@@ -13,9 +13,8 @@
                 required: true %>
     <%= f.input :max_price,
                 required: true %>
-    <%= f.input :alert_duration_days,
-                required: false %>
     <%= f.input :seller_rating,
+                hint: ("must be in percentage"),
                 required: false%>
     <button class="custom-btn btn-1" style="color: white"><%= f.button :submit %><button>
   <% end %>
