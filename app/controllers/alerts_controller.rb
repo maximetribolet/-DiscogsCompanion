@@ -31,6 +31,6 @@ class AlertsController < ApplicationController
 
   def alert_params
     params.require(:alert).permit(:min_media_condition, :min_sleeve_condition, :country, :max_price, :auto_buy,
-                                  :alert_duration_days, :seller_rating, :product_id)
+                                  :alert_duration_days, :seller_rating, :product_id, :currency)
   end
 end
