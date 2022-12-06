@@ -111,7 +111,7 @@ require "nokogiri"
 # Parser
 
 # marketplace_request_url = "https://www.discogs.com/sell/release/#{@alert.discogs_id}?price1=&price2=#{@alert.max_price}&ships_from=#{@alert.country}"
-marketplace_request_url = "https://www.discogs.com/sell/release/3548854?ev=rb"
+marketplace_request_url = "https://www.discogs.com/sell/release/367104?price1=&price2=30&currency=EUR&ships_from=Germany"
 html_file = URI.open(marketplace_request_url).read
 html_doc = Nokogiri::HTML(html_file)
 
@@ -130,6 +130,8 @@ html_doc.search(".shortcut_navigable").each do |element|
   p element.search('.seller_info').text.match(/\d+\.\d+%/)[0].gsub("%", "")
 
   # #Price
-  p element.search('.price').text.match(/[$£€]\d+\.\d+/)[0]
+  p element.search('.price').text.match(/\d+\.\d+/)[0]
 
+  # #Currency
+  p element.search('.price').text.match(/[^i2@]/)[0]
 end

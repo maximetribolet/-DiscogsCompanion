@@ -1,14 +1,15 @@
 class Scraper
 
-  def initialize(discogs_id, max_price, country)
+  def initialize(discogs_id, max_price, country, currency)
     @discogs_id = discogs_id
     @max_price = max_price
     @country = country
+    @currency = currency
   end
 
 
   def marketplace_scraper
-    marketplace_request_url = "https://www.discogs.com/sell/release/#{@discogs_id}?price1=&price2=#{@max_price}&currency=EUR&ships_from=#{@country}"
+    marketplace_request_url = "https://www.discogs.com/sell/release/#{@discogs_id}?price1=&price2=#{@max_price}&currency=#{@currency}&ships_from=#{@country}"
 
     html_file = URI.open(marketplace_request_url).read
     html_doc = Nokogiri::HTML(html_file)
@@ -30,9 +31,12 @@ class Scraper
       seller_rating = element.search('.seller_info').text.match(/\d+\.\d+%/)[0].gsub("%", "")
 
       # #Price
-      match_price = element.search('.price').text.match(/[$£€]\d+\.\d+/)[0]
+      match_price = element.search('.price').text.match(/\d+\.\d+/)[0]
 
-      results << {sleeve_condition: sleeve_condition, link_to_product: link_to_product, media_condition: media_condition, seller_rating: seller_rating, match_price: match_price}
+      ## Currency
+      currency = element.search('.price').text.match(/[^i2@]/)[0]
+
+      results << {sleeve_condition: sleeve_condition, link_to_product: link_to_product, media_condition: media_condition, seller_rating: seller_rating, match_price: match_price, currency: currency}
     end
 
     # p "results"
@@ -50,20 +54,13 @@ class Scraper
         ).where('max_price > ?', @max_price).where('? > seller_rating', result[:seller_rating])
         p matched_alerts
         matched_alerts.each do |matched_alert|
-          # p matched_alert
-          # p result[:link_to_product]
-          # p result[:match_price]
-          create_match(matched_alert, result[:link_to_product], result[:match_price])
+          create_match(matched_alert, result[:link_to_product], result[:match_price], result[:currency])
         end
-        # p "hello World "
-        # p result
-        # p
-        # create_match(result)
     end
   end
 
-  def create_match(matched_alert, link_to_product, match_price)
-    Match.create(link_to_product: link_to_product, alert_id: matched_alert.id, product_id: matched_alert.product.id, match_price: match_price)
+  def create_match(matched_alert, link_to_product, match_price, currency)
+    Match.create(link_to_product: link_to_product, alert_id: matched_alert.id, product_id: matched_alert.product.id, match_price: match_price, currency: currency)
   end
 
 
