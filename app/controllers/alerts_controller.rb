@@ -11,6 +11,7 @@ class AlertsController < ApplicationController
     @alert.media_format = @alert.product.media_format
     @alert.discogs_id = @alert.product.product_id
     if @alert.save!
+      Product.destroy(@alert.product_id)
       redirect_to products_path, notice: "alert created"
     else
       render :new, status: :unprocessable_entity
@@ -22,6 +23,12 @@ class AlertsController < ApplicationController
     @alert.update!
     redirect_to dashboard
   end
+
+  # def destroy
+  #   @alert = Alert.find(params[:id])
+  #   @alert.destroy
+  #   redirect_to alert_path
+  # end
 
   private
 
