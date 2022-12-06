@@ -4,10 +4,12 @@ class CreateAlerts < ActiveRecord::Migration[7.0]
       t.string :min_media_condition
       t.string :min_sleeve_condition
       t.string :country
-      t.string :max_price
+      t.float :max_price
       t.boolean :auto_buy
       t.integer :alert_duration_days
       t.float :seller_rating
+      t.string :media_format
+      t.string :discogs_id
       t.references :product, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
 

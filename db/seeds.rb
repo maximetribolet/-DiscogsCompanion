@@ -121,19 +121,15 @@ html_doc.search(".shortcut_navigable").each do |element|
   p element.search(".item_description_title").attribute("href").value
 
   # media_condition
-  media_condition_scrape = html_doc.css(".item_condition")
-  p media_condition_scrape.map { |m| m.css('span')[2].text.match(/\n(.*)\n/) }[0][1].strip
+  p element.search('.item_condition').text.match(/\n(.*?)\n\n/)[1].strip
 
-  # sleeve_condition
-  p media_condition_scrape.map { |m| m.css('span').text.strip.match(/Sleeve:(.*)/) }[0][1].strip
+  # # sleeve_condition
+  p element.search('.item_condition').text.match(/Sleeve:\n(.*?)\n/)[1].strip
 
-  # seller rating
-  seller_rating_scrape = html_doc.css(".seller_info")
-  p seller_rating_scrape.map { |m| m.css('strong').text.match(/[0-9]*\.[0-9]*%/) }[0][0]
+  # # seller rating
+  p element.search('.seller_info').text.match(/\d+\.\d+%/)[0].gsub("%", "")
 
-  #Price
-  match_price_scrape = html_doc.css(".price")
-  p match_price_scrape.text.strip.match(/[$£€¥]\s*[-+]?[0-9]*\.?[0-9]+/)[0]
-
+  # #Price
+  p element.search('.price').text.match(/[$£€]\d+\.\d+/)[0]
 
 end
