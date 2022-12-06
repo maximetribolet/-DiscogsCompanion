@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   resources :products, only: [:destroy]
   resources :alerts, only: %i[destroy update]
+  resources :matches, only: %i[index]
 
   resources :alerts do
-    resources :matches, only: %i[create destroy index show]
+    resources :matches, only: %i[create destroy show]
   end
 
   get "/dashboard", to: "pages#dashboard", as: :dashboard
