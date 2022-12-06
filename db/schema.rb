@@ -18,10 +18,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_110619) do
     t.string "min_media_condition"
     t.string "min_sleeve_condition"
     t.string "country"
-    t.string "max_price"
+    t.float "max_price"
     t.boolean "auto_buy"
     t.integer "alert_duration_days"
     t.float "seller_rating"
+    t.string "media_format"
+    t.string "discogs_id"
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -33,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_110619) do
   create_table "matches", force: :cascade do |t|
     t.string "status"
     t.string "link_to_product"
+    t.float "match_price"
     t.bigint "alert_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false

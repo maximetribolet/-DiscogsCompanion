@@ -264,6 +264,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  nokogiri
   pg (~> 1.1)
   pg_search
   pry (~> 0.13.1)
