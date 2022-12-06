@@ -1,4 +1,5 @@
-<%= form_with method: :get, class: "d-flex" do %>
+<div class="searchbar">
+<%= form_with method: :get, class: "" do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
@@ -6,3 +7,4 @@
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
+</div>
