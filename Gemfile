@@ -83,5 +83,6 @@ group :test do
 end
 
 gem 'faker'
-
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"
 gem 'nokogiri'

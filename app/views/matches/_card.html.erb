@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <h1>Matches</h1>
+  <div class="cols">
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+       <p><% @matches.each do |match| %>
+				<div class="container">
+					<div class="front" style="background-image: url(<%= "#{match.product.image_url}"  %>)">
+						<div class="inner">
+							<p><%= match.product.album_title %></p>
+              <span></span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+						  <h5>Media Condition</h5>
+              <p><%= match.min_media_condition %></p>
+              <h5>Sleeve Condition</h5>
+              <p><%= match.min_sleeve_condition %></p>
+              <h5>Country</h5>
+              <p><%= match.country %></p>
+              <h5>Max Price</h5>
+              <p><%= match.max_price %></p>
+              <h5>Duration</h5>
+              <p><%= match.alert_duration_days %></p>
+              <h5>Seller Rating</h5>
+              <p><%= match.seller_rating %></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+<% end %>

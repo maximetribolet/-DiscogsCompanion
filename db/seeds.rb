@@ -47,8 +47,6 @@ require "nokogiri"
 #   product.save!
 # end
 
-
-
 # puts 'fetching max wantlist'
 
 # discogs_username = "raphaelvr"
