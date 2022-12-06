@@ -11,10 +11,10 @@
     <%= f.input :country,
                 collection: Alert::NATIONS, prompt: 'Select country',
                 required: true %>
-    <%# <%= f.input :currency,
+    <%= f.input :currency,
                 required: true,
                 collection: Alert::CURRENCY, prompt: "Select Currency",
-                hint: ("Make sure you select right currency") %> %>
+                hint: ("Make sure you select right currency") %>
     <%= f.input :max_price,
                 required: true %>
     <%= f.input :seller_rating,
