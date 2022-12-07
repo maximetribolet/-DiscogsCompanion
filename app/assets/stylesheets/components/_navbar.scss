@@ -15,13 +15,26 @@
   align-items: center;
 }
 
+.a {
+    font-size: 25px;
+    font-family: HurmeBold;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    text-decoration: none;
+    color: #FF8C32;
+}
+
+
 .navigation {
   font-size: 25px;
   font-family: HurmeBold;
   justify-content: center;
   align-items: center;
   padding-top: 10px;
-  text-decoration: none !important;
+  text-decoration: none;
+  color: #FF8C32;
+
 }
 
 .navbar-lewagon {
