@@ -8,4 +8,4 @@ class UpdateUserJob < ApplicationJob
     puts "Done! Enriched #{user.email} with Clearbit"
   end
 end
-end
+
