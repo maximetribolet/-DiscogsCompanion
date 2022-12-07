@@ -1,6 +1,6 @@
-body {
-  background: #e0e5ec;
-}
+// body {
+//   background: #e0e5ec;
+// }
 h1 {
   position: relative;
   text-align: center;
@@ -43,14 +43,15 @@ button {
 }
 /* 1 */
 .btn-1 {
-  background:#FF8C32;
-  background: linear-gradient(0deg, rgb(253, 143, 39) 0%, rgb(250, 159, 85) 100%);
-  border: none;
-  width: 10em;
+  background:transparent;
+  // background: linear-gradient(0deg, rgb(253, 143, 39) 0%, rgb(250, 159, 85) 100%);
+  border: 1px rgb(89, 109, 219);
+  width: 5em;
+  height: 2em;
 }
 .btn-1:hover {
-   background: #FF8C32;
-background: linear-gradient(0deg, rgb(248, 129, 17) 0%, rgb(252, 138, 46) 100%);
+   background: rgb(38, 50, 228);
+// background: linear-gradient(0deg, rgb(248, 129, 17) 0%, rgb(252, 138, 46) 100%);
 }
 
 /* 7 */
