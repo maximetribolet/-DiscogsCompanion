@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'HurmeBold';
+  src: url('HurmeGeometricSans1 Bold.otf');
+}
+
+@font-face {
+  font-family: 'Hurmesemibold';
+  src: url('HurmeGeometricSans1 SemiBold.otf');
+}
+
+
 body {
 	background-color: $body-background;
 	font-family: "ubuntu", Arial, sans-serif;
@@ -16,7 +27,7 @@ a {
 		font-size: 70px;
 		text-transform: uppercase;
 		font-weight: 700;
-		font-family: "Josefin Sans", sans-serif;
+		font-family: "HurmeBold";
 		background: linear-gradient(to right,#06113C 10%, #25abe8 50%, #FF8C32 60%);
 		background-size: auto auto;
 		background-clip: border-box;
