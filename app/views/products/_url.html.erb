@@ -1,6 +1,6 @@
 <div class="searchbar">
 <%= simple_form_for :scrape_release_id, url: products_path, method: :post do |f|  %>
-  <%= f.input :release_id, placeholder: "Paste your discogs URL" %>
-  <%= f.submit "search", class: "btn btn-primary" %>
+  <%= f.input :release_id, placeholder: "Paste your discogs release URL or release ID" %>
+  <%= f.submit "Import", class: "btn btn-primary" %>
 <% end %>
 </div>

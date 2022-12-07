@@ -1,14 +1,20 @@
 // Specific CSS for your home-page
+@font-face {
+  font-family: 'HurmeBold';
+  src: url('HurmeGeometricSans1 Bold.otf');
+}
+
+@font-face {
+  font-family: 'Hurmesemibold';
+  src: url('HurmeGeometricSans1 SemiBold.otf');
+}
+
 .lend-info {
   background: #06113C;
   padding: 26px;
   text-align: center;
   background-color: #06113C;
 
-}
-
-h2 {
-  color: white;
 }
 
 .a {
@@ -24,6 +30,7 @@ html, body {
    height: 100%;
   //  background-color: #06113C;
    color: #FF8C32;
+
 }
 
 form, .form-label {
@@ -93,4 +100,5 @@ h1, h2, h3, h4, h5, h6 {
    font-weight: bold;
    font-size: 4vw;
    line-height: 3vw;
+   font-family: HurmeBold;
 }
