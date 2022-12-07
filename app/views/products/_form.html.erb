@@ -1,4 +1,4 @@
-<%= simple_form_for [product, alert], html: { class: "edited_form"} do |f| %>
+<%= simple_form_for [product, alert], html: { class: ""} do |f| %>
 <%= f.error_notification %>
 
 <div class="form-inputs">
@@ -20,6 +20,6 @@
     <%= f.input :seller_rating,
                 hint: ("must be in percentage"),
                 required: false%>
-    <button class="custom-btn btn-1" style="color: white"><%= f.button :submit %><button>
+    <%= f.submit "Create Alert" %>
   <% end %>
 </div>
