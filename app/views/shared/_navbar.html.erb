@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand d-flex p-2" do %>
       <div class= "logo"><%= image_tag "https://res.cloudinary.com/dicpef1tv/image/upload/v1670338341/vinyl_orange_x1yqah.png" %></div>
-      <h1>Discogs companion</h1>
+      <h1 class= logo_title>Discogs companion</h1>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="">
-            <%= link_to "Set Alerts", "/products", class: "nav_menu"%>
+            <%= link_to "Set New Alerts", "/products", class: "nav_menu"%>
           </li>
           <li class="">
             <%= link_to "My Alerts", "/alerts", class: "nav_menu"%>

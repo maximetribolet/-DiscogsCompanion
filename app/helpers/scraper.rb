@@ -7,7 +7,6 @@ class Scraper
     @currency = currency
   end
 
-
   def marketplace_scraper
     marketplace_request_url = "https://www.discogs.com/sell/release/#{@discogs_id}?price1=&price2=#{@max_price}&currency=#{@currency}&ships_from=#{@country}"
 
@@ -38,10 +37,6 @@ class Scraper
 
       results << {sleeve_condition: sleeve_condition, link_to_product: link_to_product, media_condition: media_condition, seller_rating: seller_rating, match_price: match_price, currency: currency}
     end
-
-    # p "results"
-    # p results
-    "create matches"
     create_matches(results)
     # create_match(matched_alert, link_to_product)
   end
@@ -52,17 +47,16 @@ class Scraper
         min_sleeve_condition: set_sleeve_conditions(result[:sleeve_condition]),
         min_media_condition: set_media_conditions(result[:media_condition])
         ).where('max_price > ?', @max_price).where('? > seller_rating', result[:seller_rating])
-        p matched_alerts
-        matched_alerts.each do |matched_alert|
-          create_match(matched_alert, result[:link_to_product], result[:match_price], result[:currency])
-        end
+      p matched_alerts
+      matched_alerts.each do |matched_alert|
+        create_match(matched_alert, result[:link_to_product], result[:match_price], result[:currency])
+      end
     end
   end
 
   def create_match(matched_alert, link_to_product, match_price, currency)
     Match.create(link_to_product: link_to_product, alert_id: matched_alert.id, product_id: matched_alert.product.id, match_price: match_price, currency: currency)
   end
-
 
   def set_media_conditions(media_condition)
     case media_condition
