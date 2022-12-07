@@ -13,17 +13,17 @@
 					<div class="back">
 						<div class="inner">
 						  <h5>Media Condition</h5>
-              <p><%= match.min_media_condition %></p>
+              <p><%= match.alert.min_media_condition %></p>
               <h5>Sleeve Condition</h5>
-              <p><%= match.min_sleeve_condition %></p>
+              <p><%= match.alert.min_sleeve_condition %></p>
               <h5>Country</h5>
-              <p><%= match.country %></p>
+              <p><%= match.alert.country %></p>
               <h5>Max Price</h5>
-              <p><%= match.max_price %></p>
-              <h5>Duration</h5>
-              <p><%= match.alert_duration_days %></p>
+              <p><%= match.alert.max_price %></p>
               <h5>Seller Rating</h5>
-              <p><%= match.seller_rating %></p>
+              <p><%= match.alert.seller_rating %></p>
+              <button type="button" class="btn-lg btn-dark btn-link" href="https://www.discogs.com<%=match.link_to_product%>" >Buy Now</button>
+
 						</div>
 					</div>
 				</div>
