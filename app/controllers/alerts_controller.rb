@@ -24,11 +24,11 @@ class AlertsController < ApplicationController
     redirect_to dashboard
   end
 
-  # def destroy
-  #   @alert = Alert.find(params[:id])
-  #   @alert.destroy
-  #   redirect_to alert_path
-  # end
+  def destroy
+    @alert = Alert.find(params[:id])
+    @alert.destroy
+    redirect_to alert_path
+  end
 
   private
 
