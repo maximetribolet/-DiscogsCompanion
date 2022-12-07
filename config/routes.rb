@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:destroy]
-  resources :alerts, only: %i[destroy update]
-  resources :matches, only: %i[index]
-
-  resources :alerts do
+  resources :alerts, only: %i[destroy update index] do
     resources :matches, only: %i[create destroy show]
   end
+  resources :matches, only: %i[index]
+
+
 
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"

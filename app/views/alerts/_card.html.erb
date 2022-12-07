@@ -24,6 +24,7 @@
               <p><%= alert.alert_duration_days %></p>
               <h5>Seller Rating</h5>
               <p><%= alert.seller_rating %></p>
+              <%= button_to "Delete Alert", alert_path(alert), method: :delete %>
 						</div>
 					</div>
 				</div>
