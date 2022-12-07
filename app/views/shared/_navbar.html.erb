@@ -12,18 +12,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+
           <li class="">
             <%= link_to "Set New Alerts", "/products", class: "nav_menu"%>
+
           </li>
-          <li class="">
-            <%= link_to "My Alerts", "/alerts", class: "nav_menu"%>
-          </
-          <li class="">
-            <%= link_to "My Matches", "/matches", class: "nav_menu"%>
+          <li class="nav-item">
+            <%= link_to "My Alerts", "/alerts" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My Matches", "/matches" %>
 
           </li>
           <li class="">
-            <button class="custom-btn btn-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Menu \/
             </button>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
