@@ -5,7 +5,7 @@
 <div class="lowerCatCard">
 <h3><%= product.album_title %></h3>d
 
-<%= render "form", alert: Alert.new, product: product%>
+<%= render "form", alert: Alert.new, product: product %>
 <%# <div id="catCardButton" class="button"><a href="#">Create an Alert</a></div> %>
   <%= button_to "Delete product", product_path(product), method: :delete %>
 </div>
