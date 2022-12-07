@@ -1,21 +1,13 @@
 require 'open-uri'
 class ProductsController < ApplicationController
   def index
+    alert_product_ids = Alert.distinct.pluck(:product_id)
     if params[:query].present?
-      @products = Product.local_search(params[:query])
+      @products = Product.where(user: current_user).local_search(params[:query]).where.not(id: alert_product_ids)
     else
-      @products = Product.where(user: current_user)
+      @products = Product.where(user: current_user).where.not(id: alert_product_ids)
     end
   end
-
-  # trial
-
-  def alert_params
-    params.require(:alert).permit(:min_media_condition, :min_sleeve_condition, :country, :max_price, :auto_buy,
-                                  :alert_duration_days, :seller_rating, :product_id)
-  end
-
-  # trial
 
   def show
     @product = Product.find(params[:id])
@@ -24,23 +16,15 @@ class ProductsController < ApplicationController
   def new
   end
 
-  # def create
-    # pegar a url que o usuria submited (primeiro tenta submit so' o release ID)
-    # faz um fetch request pra o api, interpoland o relsead ID -> https://api.discogs.com/releases/339574
-    # com o resultado do api, pegar as variaves que te interessam
-    # name =
-    # year =
-    # ....
-    # depois de pegar todas as variaveis que voce precisa, criar um novo Product -> Product.new(name: name_coming_from_api...)
-    # normal if save redict...
-  # end
-
   def create
-    if params.dig(:scrape_release_id, :release_id).present?
+    data = params.dig(:scrape_release_id, :release_id).match(/\d+/)
+    if data.present?
       product = Product.new
       product.user = current_user
-      product.api_scraper(params.dig(:scrape_release_id, :release_id))
-      redirect_to product
+      product.api_scraper(data[0].strip.gsub("/", ""))
+      redirect_to products_path, notice: "proper url, mate"
+    else
+      redirect_to products_path, notice: "shitty url, mate"
     end
   end
 

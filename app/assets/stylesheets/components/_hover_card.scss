@@ -1,34 +1,39 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+
 body {
   font-family:'Roboto', Helvetica, Arial, sans-serif;
-  font-weight:300;
+  font-weight:100;
   background:#333;
 }
 h3 {
-  font-size: 20px;
+  font-size: 1.1em;
   margin:0;
 }
 p{
-  font-size:0.9em;
+  font-size:0.8em;
 }
 
 /* Hover Card
 .......................................................................*/
 div.catCard {
-  border: solid 5px #e9e9e9;
-  background: #d8d8d8;
+  border: solid 5px #27325a;
+  box-shadow: 5px, 5px, 5px, 5px, gray;
+  background: #06113C;
   width: 221px;
-  height: 450px;
+  height: 660px;
   display: block;
   position: relative;
   overflow: hidden;
+  border-radius: 5%;
+  
 }
 div.lowerCatCard {
   position: absolute;
-  background: #e9e9e9;
+  background: #06113C;
   padding: 5px 5px;
-  height: 200px;
+  height: 288px;
   -webkit-transition: all 0.6s ease;
   -moz-transition:    all 0.6s ease;
   -o-transition:      all 0.6s ease;
@@ -37,21 +42,22 @@ div.lowerCatCard {
 div.lowerCatCard:hover {
   opacity: 0.95;
   bottom: 0;
-  height: 450px;
+  height: 670px;
 }
 div.catCard  div.lowerCatCard {
   left: 0;
-  bottom: -3%;
-  width: 219px;
+  bottom: 24%;
+  width: 215px;
 }
 div.catCard:hover div.lowerCatCard {
   bottom: 0;
 }
 li.catCardList {
-  width: 225px;
+  width:225px;
   display: inline-block;
   margin-right: 19px;
   margin-top: 25px;
+  background-color: #06113C;
 }
 li.catCardList-last {
   margin-right: 0;
@@ -60,6 +66,7 @@ li.catCardList-last {
 }
 ul.catCardList {
   margin: 0;
+  background-color: #06113C;
 }
 #catCardButton {
   position: absolute;
@@ -68,6 +75,7 @@ ul.catCardList {
   -webkit-transition: all 0.6s ease;
   -moz-transition:    all 0.6s ease;
   -o-transition:      all 0.6s ease;
+  box-shadow: 1em, 1em, 1em, 1em, gray;
 }
 div.lowerCatCard:hover #catCardButton {
   bottom: 5px;
@@ -85,7 +93,8 @@ div.startingPrice {
 .catCard img {
   border: 1px solid #dddddd;
   width: 219px;
-  height: 230px;
+  height: 198px;
+  box-shadow: 1em, 1em, 1em, 1em, gray;
 }
 .catCard img:hover {
   border: 1px solid #bababa;
@@ -95,7 +104,7 @@ div.startingPrice {
 .......................................................................*/
 .button {
   cursor: pointer;
-  font-size: 14px !important;
+  font-size: 12px !important;
   color: #ffffff;
   padding: 7px 10px !important;
   text-decoration: none !important;

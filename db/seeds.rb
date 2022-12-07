@@ -7,6 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 require 'pry'
+require "open-uri"
+require "nokogiri"
 
 # User.destroy_all
 # Product.destroy_all
@@ -45,8 +47,6 @@ require 'pry'
 #   product.save!
 # end
 
-
-
 # puts 'fetching max wantlist'
 
 # discogs_username = "raphaelvr"
@@ -83,25 +83,53 @@ require 'pry'
 #   end
 
 
-script for url product create
-user_url = 3548854
-url_product_create = "https://api.discogs.com/releases/#{user_url}"
+# script for url product create
+# user_url = 3548854
+# url_product_create = "https://api.discogs.com/releases/#{user_url}"
 
-url_product_create_open = URI.open(url_product_create).read
-url_product_create_response = JSON.parse(url_product_create_open)
+# url_product_create_open = URI.open(url_product_create).read
+# url_product_create_response = JSON.parse(url_product_create_open)
 
-  product = Product.new(album_title: url_product_create_response["title"],
-      artist: url_product_create_response["artists"][0]["name"],
-      genre: url_product_create_response["styles"],
-      media_format: url_product_create_response["formats"][0]["name"],
-      release_date: url_product_create_response["year"],
-      product_id: url_product_create_response["id"],
-      lowest_price: url_product_create_response["lowest_price"],
-      num_for_sale: url_product_create_response["num_for_sale"],
-      image_url: url_product_create_response["images"][0]["uri"] || url_product_create_response["images"][0]["resource_url"],
-      product_url: "https://www.discogs.com/release/#{url_product_create_response["id"]}",
-      user_id: 1)
+#   product = Product.new(album_title: url_product_create_response["title"],
+#       artist: url_product_create_response["artists"][0]["name"],
+#       genre: url_product_create_response["styles"],
+#       media_format: url_product_create_response["formats"][0]["name"],
+#       release_date: url_product_create_response["year"],
+#       product_id: url_product_create_response["id"],
+#       lowest_price: url_product_create_response["lowest_price"],
+#       num_for_sale: url_product_create_response["num_for_sale"],
+#       image_url: url_product_create_response["images"][0]["uri"] || url_product_create_response["images"][0]["resource_url"],
+#       product_url: "https://www.discogs.com/release/#{url_product_create_response["id"]}",
+#       user_id: 1)
 
-if product.save!
-  puts "#{product.id} created"
+# if product.save!
+#   puts "#{product.id} created"
+# end
+
+# Parser
+
+# marketplace_request_url = "https://www.discogs.com/sell/release/#{@alert.discogs_id}?price1=&price2=#{@alert.max_price}&ships_from=#{@alert.country}"
+marketplace_request_url = "https://www.discogs.com/sell/release/367104?price1=&price2=30&currency=EUR&ships_from=Germany"
+html_file = URI.open(marketplace_request_url).read
+html_doc = Nokogiri::HTML(html_file)
+
+html_doc.search(".shortcut_navigable").each do |element|
+
+  # link to release sale page
+  p element.search(".item_description_title").attribute("href").value
+
+  # media_condition
+  p element.search('.item_condition').text.match(/\n(.*?)\n\n/)[1].strip
+
+  # # sleeve_condition
+  p element.search('.item_condition').text.match(/Sleeve:\n(.*?)\n/)[1].strip
+
+  # # seller rating
+  p element.search('.seller_info').text.match(/\d+\.\d+%/)[0].gsub("%", "")
+
+  # #Price
+  p element.search('.price').text.match(/\d+\.\d+/)[0]
+
+  # #Currency
+  p element.search('.price').text.match(/[^i2@]/)[0]
 end

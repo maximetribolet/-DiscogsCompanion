@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <h1>Alerts</h1>
+  <div class="cols">
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+       <p><% @alerts.each do |alert| %>
+				<div class="container">
+					<div class="front" style="background-image: url(<%= "#{alert.product.image_url}"  %>)">
+						<div class="inner">
+							<p><%= alert.product.album_title %></p>
+              <span></span>
+						</div>
+					</div>
+					<div class="back">
+						<div class="inner">
+						  <h5>Media Condition</h5>
+              <p><%= alert.min_media_condition %></p>
+              <h5>Sleeve Condition</h5>
+              <p><%= alert.min_sleeve_condition %></p>
+              <h5>Country</h5>
+              <p><%= alert.country %></p>
+              <h5>Max Price</h5>
+              <p><%= alert.max_price %></p>
+              <h5>Duration</h5>
+              <p><%= alert.alert_duration_days %></p>
+              <h5>Seller Rating</h5>
+              <p><%= alert.seller_rating %></p>
+              <%= button_to "Delete Alert", alert_path(alert), method: :delete %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col" ontouchstart="this.classList.toggle('hover');">
+<% end %>

@@ -1,3 +1,4 @@
+require 'open-uri'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -15,6 +16,15 @@ class User < ApplicationRecord
 
   def discogs_username_available?
     !discogs_username.nil?
+  end
+
+  def trying_fetch
+    begin
+      fetch_wishlist
+    rescue => exception
+
+    end
+
   end
 
   def fetch_wishlist

@@ -1,8 +1,7 @@
-<%= simple_form_for Alert.new do |f| %>
+<%= simple_form_for [product, alert] do |f| %>
 <%= f.error_notification %>
 
 <div class="form-inputs">
-    <%= f.hidden_field @product_id, value: @product.id %>
     <%= f.input :min_media_condition,
                 collection: Alert::MIN_CONDITION, prompt: 'Select Minimum Condition',
                 required: true %>
@@ -12,12 +11,15 @@
     <%= f.input :country,
                 collection: Alert::NATIONS, prompt: 'Select country',
                 required: true %>
+    <%= f.input :currency,
+                required: true,
+                collection: Alert::CURRENCY, prompt: "Select Currency",
+                hint: ("Make sure you select right currency") %>
     <%= f.input :max_price,
                 required: true %>
-    <%= f.input :alert_duration_days,
-                required: false %>
     <%= f.input :seller_rating,
+                hint: ("must be in percentage"),
                 required: false%>
-    <%= f.button :submit %>
+    <button class="custom-btn btn-1" style="color: white"><%= f.button :submit %><button>
   <% end %>
 </div>

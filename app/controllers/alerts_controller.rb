@@ -7,12 +7,14 @@ class AlertsController < ApplicationController
   def create
     @alert = Alert.new(alert_params)
     @alert.user = current_user
-    # assign this aletr to current user
-    # normal if save flow
-    if @alert.save
-      redirect_to products_path, notice: "alert creted"
+    @alert.product = Product.find(params[:product_id])
+    @alert.media_format = @alert.product.media_format
+    @alert.discogs_id = @alert.product.product_id
+    if @alert.save!
+      Product.destroy(@alert.product_id)
+      redirect_to products_path, notice: "alert created"
     else
-      render new:, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -22,6 +24,12 @@ class AlertsController < ApplicationController
     redirect_to dashboard
   end
 
+  # def destroy
+  #   @alert = Alert.find(params[:id])
+  #   @alert.destroy
+  #   redirect_to alert_path
+  # end
+
   private
 
   def set_alert
@@ -30,6 +38,6 @@ class AlertsController < ApplicationController
 
   def alert_params
     params.require(:alert).permit(:min_media_condition, :min_sleeve_condition, :country, :max_price, :auto_buy,
-                                  :alert_duration_days, :seller_rating, :product_id)
+                                  :alert_duration_days, :seller_rating, :product_id, :currency)
   end
 end

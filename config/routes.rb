@@ -11,10 +11,17 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:destroy]
-  resources :alerts, only: %i[destroy update]
+  resources :alerts, only: %i[destroy update index] do
+    resources :matches, only: %i[create destroy show]
+  end
+  resources :matches, only: %i[index]
 
-  resources :alerts do
-    resources :matches, only: %i[create destroy index show]
+
+
+  # Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 
   get "/dashboard", to: "pages#dashboard", as: :dashboard
