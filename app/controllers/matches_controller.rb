@@ -1,6 +1,5 @@
 class MatchesController < ApplicationController
   def index
-    @matches = Match.where(user: current_user)
+    @matches = Match.joins(:alerts).where(alerts: {user: current_user})
   end
-
 end
