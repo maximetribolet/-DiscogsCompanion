@@ -1,6 +1,7 @@
 class Alert < ApplicationRecord
   belongs_to :product
   belongs_to :user
+  has_many :matches, dependent: :destroy
 
   MIN_CONDITION = ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Good (G)", "Fair (F)", "Poor (P)"]
   MIN_SLEEVE_CONDITION = ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Good (G)", "Fair (F)", "Poor (P)", "Generic", "Not Graded", "No Cover"]

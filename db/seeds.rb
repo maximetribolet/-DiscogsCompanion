@@ -108,7 +108,7 @@ require "nokogiri"
 
 # Parser
 
-# marketplace_request_url = "https://www.discogs.com/sell/release/#{@alert.discogs_id}?price1=&price2=#{@alert.max_price}&ships_from=#{@alert.country}"
+marketplace_request_url = "https://www.discogs.com/sell/release/#{@alert.discogs_id}?price1=&price2=#{@alert.max_price}&ships_from=#{@alert.country}"
 marketplace_request_url = "https://www.discogs.com/sell/release/367104?price1=&price2=30&currency=EUR&ships_from=Germany"
 html_file = URI.open(marketplace_request_url).read
 html_doc = Nokogiri::HTML(html_file)

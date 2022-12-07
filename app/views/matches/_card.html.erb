@@ -6,6 +6,7 @@
 				<div class="container">
 					<div class="front" style="background-image: url(<%= "#{match.product.image_url}"  %>)">
 						<div class="inner">
+            <p><%= match.product.artist %></p>
 							<p><%= match.product.album_title %></p>
               <h2>Match Price</h2>
               <p><%= match.currency%><%= match.match_price%></p>
@@ -27,7 +28,7 @@
               <p><%= match.alert.seller_rating %></p>
               <h2>Match Price</h2>
               <p><%= match.currency%><%= match.match_price%></p>
-              <button type="button" class="btn-lg btn-dark btn-link" href="https://www.discogs.com<%match.link_to_product%>" target="_blank">Buy Now</button>
+              <button type="button" class="btn-lg btn-dark btn-link" ><a href="https://www.discogs.com<%=match.link_to_product%>" target="_blank">Buy Now</a></button>
 						</div>
 					</div>
 				</div>
