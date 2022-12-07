@@ -7,11 +7,13 @@
 <div id="record">
   <div class="content">
     <h1 class="rock" style="background: none;">Set custom alerts to your Discogs Wishlist</h1>
+    <h1 class= "register"> <%= link_to '/users/sign_up', remote: true do %>
+      <button class="btn btn-primary border-light btn-lg" style="background-color: #F27B21">Register Here</button>
+      <% end %>
+    </h1>
   </div>
     <div>
-      <%= link_to '/users/sign_up', remote: true do %>
-      <button class="btn btn-primary border-light" style="background-color: #F27B21">Register Here</button>
-      <% end %>
+
     </div>
 </div>
 <div>

@@ -1,5 +1,5 @@
-<div class="wrapper">
-  <h1>Albums</h1>
+
+<div class= "wrapper">
   <div class="cols">
 			<div class="col" ontouchstart="this.classList.toggle('hover');">
         <p><% @products.each do |product| %>
@@ -19,10 +19,10 @@
 					</div>
 					<div class="back">
 						<div class="inner">
-						  <%= render "form", alert: Alert.new, product: product%>
-						</div>
-					</div>
+						<%= render "form", alert: Alert.new, product: product%>
 				</div>
 			</div>
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
+		</div>
+	</div>
+<div class="col" ontouchstart="this.classList.toggle('hover');">
 <% end %>

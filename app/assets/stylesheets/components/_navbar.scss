@@ -15,7 +15,14 @@
   align-items: center;
 }
 
-
+.navigation {
+  font-size: 25px;
+  font-family: HurmeBold;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  text-decoration: none !important;
+}
 
 .navbar-lewagon {
   justify-content: space-between;
@@ -32,9 +39,7 @@
 
 .logo {
   padding-right: 30px;
-  
   max-width: 100%;
-
 }
 
 .btn-1 {
