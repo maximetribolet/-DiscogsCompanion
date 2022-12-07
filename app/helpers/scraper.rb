@@ -1,3 +1,4 @@
+require 'pry'
 class Scraper
 
   def initialize(discogs_id, max_price, country, currency)
@@ -38,7 +39,6 @@ class Scraper
       results << {sleeve_condition: sleeve_condition, link_to_product: link_to_product, media_condition: media_condition, seller_rating: seller_rating, match_price: match_price, currency: currency}
     end
     create_matches(results)
-    # create_match(matched_alert, link_to_product)
   end
 
   def create_matches(results)
@@ -46,8 +46,7 @@ class Scraper
       matched_alerts = Alert.where(country: @country,
         min_sleeve_condition: set_sleeve_conditions(result[:sleeve_condition]),
         min_media_condition: set_media_conditions(result[:media_condition])
-        ).where('max_price > ?', @max_price).where('? > seller_rating', result[:seller_rating])
-      p matched_alerts
+        ).where('max_price > ?', result[:match_price].to_i).where('? > seller_rating', result[:seller_rating].to_i)
       matched_alerts.each do |matched_alert|
         create_match(matched_alert, result[:link_to_product], result[:match_price], result[:currency])
       end

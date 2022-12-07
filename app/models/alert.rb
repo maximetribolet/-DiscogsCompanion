@@ -11,7 +11,7 @@ class Alert < ApplicationRecord
   after_create :search_matches
 
   def search_matches
-    MatchFinderJob.perform_later(discogs_id, max_price, country, "EUR")
+    MatchFinderJob.perform_later(discogs_id, max_price, country, currency)
     # Scraper.new(discogs_id, max_price, country, currency).marketplace_scraper
   end
 end
