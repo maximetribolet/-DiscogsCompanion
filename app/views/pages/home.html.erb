@@ -6,19 +6,21 @@
 <meta property="og:image" content="vinyl_eucfbz.png" />
 
 <div id="record">
-   <div class="content">
-      <h1 class="rock" style="background: none;">Set custom alerts to your Discogs Wishlist</h1>
-   </div>
-   <div>
-    <%= link_to '/users/sign_up', remote: true do %>
-  <button class="btn btn-primary border-light" style="background-color: #F27B21">Register Here</button>
-  <% end %>
-   </div>
-
+  <div class="content">
+    <h1 class="rock" style="background: none;">Set custom alerts to your Discogs Wishlist</h1>
+  </div>
+    <div>
+      <%= link_to '/users/sign_up', remote: true do %>
+      <button class="btn btn-primary border-light" style="background-color: #F27B21">Register Here</button>
+      <% end %>
+    </div>
+</div>
+<div>
+<%= render "how_to" %>
 </div>
 
   <div class="footer d-flex justify-content-center align-items-center flex-row text-light" style="background-color: #222222">
-  <a href="/about" class="About mx-2">About</a>
-  <a href="/team" class="Team mx-2">Team</a>
-  <a href="/contact" class="Contact Us mx-2">Contact Us</a>
+    <a href="/about" class="About mx-2">About</a>
+    <a href="/team" class="Team mx-2">Team</a>
+    <a href="/contact" class="Contact Us mx-2">Contact Us</a>
   </div>
