@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'HurmeBold';
+  src: url('HurmeGeometricSans1 Bold.otf');
+}
+
+@font-face {
+  font-family: 'Hurmesemibold';
+  src: url('HurmeGeometricSans1 SemiBold.otf');
+}
+
+.title {
+  color: #FF8C32;
+  text-align: center;
+  font-family: HurmeBold;
+  font-size: 60px;
+}
+
+.how_to {
+  color: #FF8C32;
+  text-align: center;
+  font-family: Hurmesemibold;
+  font-size: x-large;
+}
+
+.step {
+  color: #FF8C32;
+  text-align: center;
+  font-family: HurmeBold;
+  font-size: 45px;
+}
+
+body {
+  background-image: url('https://res.cloudinary.com/dicpef1tv/image/upload/v1669724537/background.jpg');
+  background-position: center;
+}
