@@ -1,37 +1,36 @@
 <div class="wrapper">
   <h1>Matches</h1>
   <div class="cols">
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-       <p><% @matches.each do |match| %>
-				<div class="container">
-					<div class="front" style="background-image: url(<%= "#{match.product.image_url}"  %>)">
-						<div class="inner">
-            <p><%= match.product.artist %></p>
-							<p><%= match.product.album_title %></p>
-              <h2>Match Price</h2>
-              <p><%= match.currency%><%= match.match_price%></p>
-              <span></span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-              <h2>Alert Parameters</h2>
-						  <h5>Media Condition</h5>
-              <p><%= match.alert.min_media_condition %></p>
-              <h5>Sleeve Condition</h5>
-              <p><%= match.alert.min_sleeve_condition %></p>
-              <h5>Country</h5>
-              <p><%= match.alert.country %></p>
-              <h5>Max Price</h5>
-              <p><%= match.alert.max_price %></p>
-              <h5>Seller Rating</h5>
-              <p><%= match.alert.seller_rating %></p>
-              <h2>Match Price</h2>
-              <p><%= match.currency%><%= match.match_price%></p>
-              <button type="button" class="btn-lg btn-dark btn-link" ><a href="https://www.discogs.com<%=match.link_to_product%>" target="_blank">Buy Now</a></button>
+       <% @matches.each do |match| %>
+       		<div class="col" ontouchstart="this.classList.toggle('hover');">
+            <div class="container">
+              <div class="front" style="background-image: url(<%= "#{match.product.image_url}"  %>)">
+                <div class="inner">
+                <p><%= match.product.artist %></p>
+                  <p><%= match.product.album_title %></p>
+                  <h2>Match Price</h2>
+                  <p><%= match.currency%><%= match.match_price%></p>
+                  <span></span>
+                </div>
+              </div>
+                <div class="back">
+                  <div class="inner">
+                    <h2>Alert Parameters</h2>
+                    <h5>Media Condition</h5>
+                    <p><%= match.alert.min_media_condition %></p>
+                    <h5>Sleeve Condition</h5>
+                    <p><%= match.alert.min_sleeve_condition %></p>
+                    <h5>Country</h5>
+                    <p><%= match.alert.country %></p>
+                    <h5>Max Price</h5>
+                    <p><%= match.alert.max_price %></p>
+                    <h5>Seller Rating</h5>
+                    <p><%= match.alert.seller_rating %></p>
+                    <h2>Match Price</h2>
+                    <p><%= match.currency%><%= match.match_price%></p>
+                <button type="button" class="btn-lg btn-dark btn-link" ><a href="https://www.discogs.com<%=match.link_to_product%>" target="_blank">Buy Now</a></button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
 <% end %>
