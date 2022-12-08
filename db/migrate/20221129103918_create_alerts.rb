@@ -8,7 +8,6 @@ class CreateAlerts < ActiveRecord::Migration[7.0]
       t.boolean :auto_buy
       t.integer :alert_duration_days
       t.float :seller_rating
-      t.string :media_format
       t.string :discogs_id
       t.references :product, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
