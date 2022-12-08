@@ -1,15 +1,6 @@
-@font-face {
-  font-family: 'HurmeBold';
-  src: font-url('HurmeGeometricSans1 Bold.otf');
-}
-
-@font-face {
-  font-family: 'Hurmesemibold';
-  src: font-url('HurmeGeometricSans1 SemiBold.otf');
-
 .logo_title {
   font-size: 40px;
-  font-family: HurmeBold;
+  font-family: "HurmeBold";
   justify-content: center;
   align-items: center;
 }
@@ -20,7 +11,7 @@
 
 .navigation .nav_menu{
   font-size: 27px;
-  font-family: HurmeBold;
+  font-family: "HurmeBold";
   justify-content: center;
   align-items: center;
   padding-top: 10px;
