@@ -2,7 +2,7 @@
   <h1>Matches</h1>
   <div class="cols">
 			<div class="col" ontouchstart="this.classList.toggle('hover');">
-       <p><% @matches.each do |match| %>
+       <% @matches.each do |match| %>
 				<div class="container">
 					<div class="front" style="background-image: url(<%= "#{match.product.image_url}"  %>)">
 						<div class="inner">
