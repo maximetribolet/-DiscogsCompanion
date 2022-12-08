@@ -1,12 +1,11 @@
-
 <div class= "wrapper">
   <div class="cols">
-			<div class="col" ontouchstart="this.classList.toggle('hover');">
-        <p><% @products.each do |product| %>
-				<div class="container">
-					<div class="front" style="background-image: url(<%= "#{product.image_url}"  %>)">
-						<div class="inner">
-							<p><%= product.album_title %></p>
+    <% @products.each do |product| %>
+      <div class="col" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front" style="background-image: url(<%= "#{product.image_url}"  %>)">
+            <div class="inner">
+              <p><%= product.album_title %></p>
               <span>
               <h6>Artist</h6>
               <p><%= product.artist %></p>
@@ -15,14 +14,16 @@
               <h6>Lowest Price</h6>
               <p><%= product.lowest_price %></p>
               </span>
-						</div>
-					</div>
-					<div class="back">
-						<div class="inner">
-						<%= render "form", alert: Alert.new, product: product%>
-				</div>
-			</div>
-		</div>
-	</div>
-<div class="col" ontouchstart="this.classList.toggle('hover');">
-<% end %>
+            </div>
+              </div>
+                <div class="back">
+                  <div class="inner">
+                    <%= render "form", alert: Alert.new, product: product%>
+                  </div>
+                </div>
+              </div>
+            </div>
+      <% end %>
+    </div>
+  </div>
+</div>
