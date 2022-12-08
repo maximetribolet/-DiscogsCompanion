@@ -60,40 +60,38 @@ class Scraper
   def set_media_conditions(media_condition)
     case media_condition
     when "Mint (M)"
-      ["Mint (M)"]
-    when "Near Mint (NM or M-)"
-      ["Mint (M)", "Near Mint (NM or M-)"]
-    when "Very Good Plus (VG+)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)"]
-    when "Very Good (VG)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)"]
-    when "Good Plus (G+)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)"]
-    when "Fair (F)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)"]
-    when "Poor (P)"
       ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)"]
+    when "Near Mint (NM or M-)"
+      ["Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)"]
+    when "Very Good Plus (VG+)"
+      ["Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)"]
+    when "Very Good (VG)"
+      ["Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)"]
+    when "Good Plus (G+)"
+      ["Good Plus (G+)", "Fair (F)", "Poor (P)"]
+    when "Fair (F)"
+      ["Fair (F)", "Poor (P)"]
+    when "Poor (P)"
+      ["Poor (P)"]
     end
   end
 
   def set_sleeve_conditions(sleeve_condition)
     case sleeve_condition
     when "Mint (M)"
-      ["Mint (M)"]
+      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)", "Generic", "Not Graded", "No Cover"]
     when "Near Mint (NM or M-)"
-      ["Mint (M)", "Near Mint (NM or M-)"]
+      ["Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)", "Generic", "Not Graded", "No Cover"]
     when "Very Good Plus (VG+)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)"]
+      ["Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)", "Generic", "Not Graded", "No Cover"]
     when "Very Good (VG)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)"]
+      ["Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)", "Generic", "Not Graded", "No Cover"]
     when "Good Plus (G+)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)"]
+      ["Good Plus (G+)", "Fair (F)", "Poor (P)", "Generic", "Not Graded", "No Cover"]
     when "Fair (F)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)"]
+      ["Fair (F)", "Poor (P)", "Generic", "Not Graded", "No Cover"]
     when "Poor (P)"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)"]
-    when "Generic"
-      ["Mint (M)", "Near Mint (NM or M-)", "Very Good Plus (VG+)", "Very Good (VG)", "Good Plus (G+)", "Fair (F)", "Poor (P)", "Generic"]
+      ["Poor (P)", "Generic", "Not Graded", "No Cover"]
     end
   end
 end
