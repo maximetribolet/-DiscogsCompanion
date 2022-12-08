@@ -11,16 +11,19 @@
 @import "components/index";
 @import "pages/index";
 
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@600;700&display=swap');
+
+
 body {
   background-color: #06113C !important;
 }
 
 @font-face {
   font-family: 'HurmeBold';
-  src: url('HurmeGeometricSans1 Bold.otf');
+  src: url('/assets/fonts/HurmeGeometricSans1 Bold.otf') format("truetype");
 }
 
 @font-face {
   font-family: 'Hurmesemibold';
-  src: url('HurmeGeometricSans1 SemiBold.otf');
+  src: url('/assets/fonts/HurmeGeometricSans1 SemiBold.otf') format("truetype");
 }

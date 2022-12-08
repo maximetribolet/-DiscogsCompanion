@@ -19,12 +19,7 @@ class User < ApplicationRecord
   end
 
   def trying_fetch
-    begin
-      fetch_wishlist
-    rescue => exception
-
-    end
-
+    # fetches only 10 results
   end
 
   def fetch_wishlist
@@ -57,3 +52,5 @@ class User < ApplicationRecord
     end
   end
 end
+
+

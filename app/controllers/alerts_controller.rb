@@ -8,7 +8,6 @@ class AlertsController < ApplicationController
     @alert = Alert.new(alert_params)
     @alert.user = current_user
     @alert.product = Product.find(params[:product_id])
-    @alert.media_format = @alert.product.media_format
     @alert.discogs_id = @alert.product.product_id
     if @alert.save!
 
