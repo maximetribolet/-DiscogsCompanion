@@ -22,7 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_141247) do
     t.boolean "auto_buy"
     t.integer "alert_duration_days"
     t.float "seller_rating"
-    t.string "media_format"
     t.string "discogs_id"
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
