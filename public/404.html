@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>(404 ERROR)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
@@ -51,17 +51,117 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .lend-info {
+  background: #06113C;
+  padding: 26px;
+  text-align: center;
+  background-color: #06113C;
+
+}
+
+.a {
+  color: white;
+  text-decoration: underline;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+
+html, body {
+   margin: 0;
+   width: 100%;
+   height: 100%;
+  //  background-color: #06113C;
+   color: #FF8C32;
+
+}
+
+form, .form-label {
+  color: #FF8C32;
+  background: #06113C;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #FF8C32;
+}
+
+.catCard {
+  color: #FF8C32;
+  background-color: #06113C;
+}
+
+#record {
+   width: 100%;
+   height: 100%;
+   position: relative;
+   overflow: hidden;
+   background-color: #06113C;
+
+   /* Center text */
+   text-align: center, #FF8C32;
+   -webkit-align-items: center;
+   -ms-flex-align: center;
+   align-items: center;
+   display: -webkit-flex;
+   display: flex;
+}
+
+#record::before {
+   background: url("https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Music-PNG/Gramophone_Vinyl_LP_Record_PNG_Transparent_Clip_Art_Image.png?m=1463021701")
+      no-repeat center center;
+   background-size: cover;
+   content: "";
+   width: 100vw;
+   height: 100vw;
+   position: absolute;
+   animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+.content {
+   font-family: 'Roboto Slab', serif;
+   font-size: 1.0vw;
+   line-height: 0;
+   color:#FF8C32;
+   position: relative;
+   margin: 0 auto;
+}
+
+.rock {
+   margin: 0;
+   padding: 0;
+   font-weight: bold;
+   font-size: 4vw;
+   line-height: 3vw;
+   font-family: 'Signika';
+}
+
+.register {
+  padding-top: 35px;
+  font-family: 'Signika';
+}
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+<body>
+  <div id="record">
+    <div class="content">
+      <h1 class="rock" style="background: none;">ERROR 404, PAGE NOT FOUND</h1>
+        <p>Want to go back home?</p>
+        <a href='http://www.discogscompanion.com/'><button class="btn btn-primary border-light btn-lg" style="background-color: #F27B21">Home</button></a>
+
+      </h1>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+  <div>
 </body>
 </html>
