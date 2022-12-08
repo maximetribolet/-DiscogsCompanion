@@ -1,10 +1,10 @@
-<div class="">
-<%= form_with method: :get, class: "" do %>
+<div class="mt-3">
+<%= form_with method: :get, class: ""  do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find your album"
   %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <%= submit_tag "Search", class: "btn btn-primary btn-lg btn-block mt-2" %>
 <% end %>
 </div>

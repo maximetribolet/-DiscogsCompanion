@@ -1,6 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "/", class: "navbar-brand d-flex p-2" do %>
+    <div class="test">
+      <%= link_to "/", class: "navbar-brand d-flex p-2" do %>
       <div class= "logo"><%= image_tag "https://res.cloudinary.com/dicpef1tv/image/upload/v1670338341/vinyl_orange_x1yqah.png" %></div>
       <h1 class= logo_title>Discogs companion</h1>
     <% end %>
@@ -9,16 +10,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse pt-1" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="navigation">
+          <li class="navigation pt-2">
             <%= link_to "Set New Alerts", "/products", class: "nav_menu"%>
           </li>
-          <li class="navigation">
+          <li class="navigation pt-2">
             <%= link_to "My Alerts", "/alerts", class: "nav_menu"%>
-          </
-          <li class="navigation">
+          <li class="navigation pt-2">
             <%= link_to "My Matches", "/matches", class: "nav_menu"%>
 
           </li>
@@ -38,5 +38,7 @@
         <% end %>
       </ul>
     </div>
+    </div>
+
   </div>
 </div>
