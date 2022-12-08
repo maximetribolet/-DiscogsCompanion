@@ -2,7 +2,7 @@
 <div class= "wrapper">
   <div class="cols">
 			<div class="col" ontouchstart="this.classList.toggle('hover');">
-        <p><% @products.each do |product| %>
+        <% @products.each do |product| %>
 				<div class="container">
 					<div class="front" style="background-image: url(<%= "#{product.image_url}"  %>)">
 						<div class="inner">
