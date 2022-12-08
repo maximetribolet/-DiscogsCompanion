@@ -2,7 +2,7 @@
   <h1>My Alerts</h1>
   <div class="cols">
 			<div class="col" ontouchstart="this.classList.toggle('hover');">
-       <p><% @alerts.each do |alert| %>
+      <% @alerts.each do |alert| %>
 				<div class="container">
 					<div class="front" style="background-image: url(<%= "#{alert.product.image_url}"  %>)">
 						<div class="inner">
